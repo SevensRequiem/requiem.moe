@@ -96,13 +96,41 @@ a:hover {
     0 0 102px #0fa,
     0 0 151px #0fa;
 }
-#menu li {
+#menu li{
   display:inline;
-  position:relative;
 }
-#musicbox{
-  width: 15%;
-  padding: 10px;
+#playlist ol{
+  border: 2px solid black;
+  height: 200px;
+  width: 300px;
+  position:absolute;
+  left: 0%;
+  z-index: 999;
+  background-color:rgba(0, 0, 0, 0.23);
+  overflow: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+#playlist li {
+  font-family: "712serif";
+  counter-increment: item;
+
+}
+#playlist ol::-webkit-scrollbar {
+  display: none;
+}
+
+.time, .play-pause {
+  color: #ffffff;
+  font-family: "712serif", Courier, monospace;
+  font-size: 1.3em;
+  text-shadow: 0 0 1px #423030, 1px 1px 1px #1a1c00, 2px 1px 1px #00c3ff;
+  text-decoration: none;
+}
+.controls {
+  position: absolute;
+  display:inline;
 }
 #statbox {
   padding: 10px;
