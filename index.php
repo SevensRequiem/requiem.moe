@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+ require('getanime.php');
+require __DIR__ . "/includes/functions.php";
+require __DIR__ . "/includes/discord.php";
+require __DIR__ . "/config.php";
+?>
 <html lang="en" >
 <head>
 	<script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.js"></script>
@@ -29,6 +35,14 @@
 								<li style="float:right;"><span>-</span></li>
 								<li style="float:right;"><a><btn>youtube</btn></a></li>
 								<li style="float:right;"><a>[]</a></li>
+                <?php
+			$auth_url = url($client_id, $redirect_url, $scopes);
+			if (isset($_SESSION['user'])) {
+				echo '<a href="includes/logout.php"><button class="log-in">LOGOUT</button></a>';
+			} else {
+				echo "<a href='$auth_url'><button class='log-in'>LOGIN</button></a>";
+			}
+			?>
 		</ul>
 </nav>
 <div>version 1.4!!</div>
