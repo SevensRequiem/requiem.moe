@@ -99,18 +99,24 @@ a:hover {
 #menu li{
   display:inline;
 }
-#playlist ol{
+#playlist ol {
   border: 2px solid black;
   height: 200px;
   width: 300px;
-  position:absolute;
-  left: 0%;
+  position: absolute;
+  left: 10%;
   z-index: 999;
-  background-color:rgba(0, 0, 0, 0.23);
+  background-color: rgba(0, 0, 0, 0.23);
   overflow: scroll;
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
+  display: none; /* initially hidden */
 }
+
+#playlist.show ol{
+  display: block; /* show when toggled */
+}
+
 
 #playlist li {
   font-family: "712serif";
@@ -140,6 +146,7 @@ a:hover {
   position:absolute;
   width: 100%;
   height: 100%;
+  display: flexbox;
 }
 #document {
   width: 100%;
@@ -153,6 +160,43 @@ a:hover {
   opacity: 0.2;
   z-index: 98;
   pointer-events: none;
+}
+.pulse {
+  animation-name: pulse-animation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  color: #00ff00;
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.glow {
+  animation-name: glow-animation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  color: #00ff00;
+}
+
+@keyframes glow-animation {
+  0% {
+    text-shadow: 0px 0px 10px rgba(255,255,255,1);
+  }
+  50% {
+    text-shadow: 0px 0px 20px rgba(255,255,255,1);
+  }
+  100% {
+    text-shadow: 0px 0px 10px rgba(255,255,255,1);
+  }
 }
 
 @keyframes crt {

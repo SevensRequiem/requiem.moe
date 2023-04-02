@@ -3,7 +3,7 @@ order allow,deny
 deny from all
 </Files>
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteRule ^(blog|versions|server|edit)\.php$ - [F,L]
 Options -Indexes

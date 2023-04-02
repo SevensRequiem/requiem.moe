@@ -10,6 +10,7 @@
 <?php
 error_reporting(E_ERROR);
 require "./includes/discord.php";
+
 function has_admin($guildid, $adminid)
 {
     $url =
