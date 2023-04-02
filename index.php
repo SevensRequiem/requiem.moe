@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
- require('getanime.php');
 require __DIR__ . "/includes/functions.php";
 require __DIR__ . "/includes/discord.php";
 require __DIR__ . "/config.php";
@@ -17,8 +16,8 @@ require __DIR__ . "/config.php";
 <body>
 <!-- partial:index.partial.html -->
 <body class="background">
-	
 	 	<canvas id="staticeffect"></canvas>
+     <header id="header">
 		<nav id="menu">
 			<ul>
 			<li><a href ="#" onclick="load_home()"><span style="font-size: 35px;">requiem.moe</span></a></li>
@@ -45,7 +44,7 @@ require __DIR__ . "/config.php";
 			?>
 		</ul>
 </nav>
-<div>version 1.4!!</div>
+<div id="uptime"></div>
 <div style="display: flex;"> 
 			<audio preload autoplay></audio>
 <div id="playlist" style="display: none;"><ol>
@@ -61,21 +60,27 @@ require __DIR__ . "/config.php";
 </div>
 
 			</div>
+    </header>
+      <hr>
 		<div id="content">
 		</div>
-		<div id="footer">
-			footer
 		</div>
-		</div>
-</body>
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
-  <script src="./script.js"></script>
-
-</body>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script><script  src="./script.js"></script>
+<script>
+$(document).ready(function() {
+    setInterval(function() {
+        $.ajax({
+            url: './includes/uptime.php',
+            success: function(data) {
+                $('#uptime').text('Server Uptime: ' + data);
+            }
+        });
+    }, 5000); // Refresh every 5 seconds
+});
 
+  </script>
 </body>
 </html>
 <script>

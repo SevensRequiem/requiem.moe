@@ -73,6 +73,7 @@ if (
         "date" => $date,
         "image" => $image,
         "quote" => $quote,
+        "author" => $_SESSION["username"],
     ];
     $postJson = json_encode($postData);
     $postJsonFile = "./data/posts/" . $uuid . "/post.json";
@@ -125,16 +126,28 @@ if (
 if (isset($_SESSION["state"])) {
     if (has_admin($guildid, $adminid)) {
         echo <<<HTML
-    <div class="post-panel">
-        <form action="blog.php" method="post" enctype="multipart/form-data">
-            <input type="text" name="title" placeholder="Title">
-            <input type="text" name="image" placeholder="Image">
-            <input type="text" name="quote" placeholder="Quote">
-            <textarea name="content" cols="30" rows="10" placeholder="Content"></textarea>
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Post" name="save">
-        </form>
-    </div>
+<div class="post-panel">
+    <form action="blog.php" method="post" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Title">
+        <input type="text" name="quote" placeholder="Quote">
+
+        <textarea name="content" id="markdown-editor" cols="30" rows="10" placeholder="Content"></textarea>
+
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Post" name="save">
+    </form>
+</div>
+
+<!-- Import SimpleMDE -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<!-- Initialize SimpleMDE -->
+<script>
+    var simplemde = new SimpleMDE({
+        element: document.getElementById("markdown-editor")
+    });
+</script>
 HTML;
     }
 }
@@ -161,13 +174,14 @@ foreach ($postDirs as $postDir) {
     $postQuote = $postData["quote"];
     $postDate = $postData["date"];
     $postId = $postData["uuid"];
+    $postAuthor = $postData["author"];
     $postUrl = "./data/posts/" . $postId . "/"; // display post data
     echo '<fieldset class="blogpost">';
         if (has_admin($guildid, $adminid)) {
             echo '<a href="edit.php?post=' . $postId . '">Edit</a>';
             echo " <span>post id: " . $postId . "</span>";
         }
-        echo "<legend>" . $postTitle . ".txt @ " . $postDate . "</legend>";
+        echo "<legend>". $postAuthor .":  " . $postTitle . ".txt " . $postDate . "</legend>";
         echo $Parsedown->text($postContent);
         // Parse post content with Parsedown
         if (!empty($postImage)) {
@@ -223,11 +237,16 @@ foreach ($postDirs as $postDir) {
             if (!file_exists($comments_dir)) {
                 mkdir($comments_dir, 0777, true); // create comments directory if it doesn't exist
             }
-            return file_put_contents($comments_file, $new_comments_data);
+            return (file_put_contents($comments_file, $new_comments_data) !== false);
         }
+        
         if (!file_exists($comments_file)) {
-            create_comments_file($comments_file);
+            if (!create_comments_file($comments_file)) {
+                echo "<p>Error creating comments file.</p>";
+                exit();
+            }
         }
+        
         $commentsXml = simplexml_load_file($comments_file);
         $commentXml = $commentsXml->addChild("comment");
         $commentXml->addChild("author", $author);

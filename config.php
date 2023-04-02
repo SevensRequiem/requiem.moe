@@ -9,5 +9,5 @@ $secret_id = "fW1j_eqpqc3MJG7Y00kbQgSM63T7PZAw";
 $scopes = "identify+guilds+guilds.join+connections+guilds.members.read";
 
 # REDIRECT URL
-$redirect_url = "http://localhost/requiem.moe/includes/login.php";
+$redirect_url = "http://70.57.91.222/requiem.moe/includes/login.php";
 ?>

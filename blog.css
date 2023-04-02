@@ -1,0 +1,210 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  /* Navigation styles */
+  nav {
+    background-color: #444;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Main styles */
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+
+  /* Comment form styles */
+  form {
+    margin-bottom: 20px;
+  }
+  
+  fieldset {
+    border: 2px solid aqua;
+    box-shadow: 0 0 5px aqua;    
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  fieldset legend {
+    padding: 0 10px;
+    color : aqua;
+    border: #570000;
+    box-shadow: 0 0 5px aqua;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input,
+  textarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 50%;
+    color: #000;
+    text-shadow: #eee 0 0 1px;
+    background-color: #333;
+  }
+  
+  input[type="submit"] {
+    background-color: #333;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  input[type="text"] {
+    background-color: #333;
+    border: none;
+    color: #000;
+    text-shadow: #eee 0 0 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #444;
+  }
+  
+  input[name="username"] {
+    background-color: #444;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  /* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin: 1em 0;
+    color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+    font-size: 0.83em;
+}
+
+h6 {
+    font-size: 0.67em;
+}
+
+/* Paragraphs */
+p {
+    margin: 1em 0;
+    color: #eef;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Code blocks */
+pre {
+    background-color: #000000;
+    border: 1px solid #570000;
+    font-size: 14px;
+    padding: 10px;
+}
+
+/* Inline code */
+code {
+    background-color: #000000;
+    color: rgb(103, 103, 253);
+    font-size: 14px;
+    padding: 3px 5px;
+}
+
+/* Lists */
+ul, ol {
+    margin: 1em 0;
+    padding: 0;
+    color: #eef;
+}
+
+li {
+    margin: 0.5em 0;
+    padding: 0 0 0 1em;
+    text-indent: -1em;
+    color: #eef;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 5px solid #ddd;
+    margin: 1em 0;
+    padding: 10px;
+    color: #eef;
+}
+
+blockquote p {
+    margin: 0;
+    color: #eef;
+}
+
+/* Horizontal rule */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+}
