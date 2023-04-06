@@ -28,5 +28,23 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'ip2location/ip2location-php' => array(
+            'pretty_version' => '8.3.0',
+            'version' => '8.3.0.0',
+            'reference' => '4c501aa1f666ae85eab84d4df9d19399f2e6ce15',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ip2location/ip2location-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'maxmind-db/reader' => array(
+            'pretty_version' => 'v1.11.0',
+            'version' => '1.11.0.0',
+            'reference' => 'b1f3c0699525336d09cc5161a2861268d9f2ae5b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../maxmind-db/reader',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
     ),
 );

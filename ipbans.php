@@ -46,13 +46,65 @@ $database = new \IP2Location\Database('./IP2LOCATION-LITE-DB1.BIN', \IP2Location
 
 $record = $database->lookup($ip, \IP2Location\Database::ALL);
 
+$europeanCountries = [
+  'AL', // Albania
+  'AD', // Andorra
+  'AM', // Armenia
+  'AT', // Austria
+  'AZ', // Azerbaijan
+  'BY', // Belarus
+  'BE', // Belgium
+  'BA', // Bosnia and Herzegovina
+  'BG', // Bulgaria
+  'HR', // Croatia
+  'CY', // Cyprus
+  'CZ', // Czech Republic
+  'DK', // Denmark
+  'EE', // Estonia
+  'FI', // Finland
+  'FR', // France
+  'GE', // Georgia
+  'DE', // Germany
+  'GR', // Greece
+  'HU', // Hungary
+  'IS', // Iceland
+  'IE', // Ireland
+  'IT', // Italy
+  'KZ', // Kazakhstan
+  'LV', // Latvia
+  'LI', // Liechtenstein
+  'LT', // Lithuania
+  'LU', // Luxembourg
+  'MK', // North Macedonia
+  'MT', // Malta
+  'MD', // Moldova
+  'MC', // Monaco
+  'ME', // Montenegro
+  'NL', // Netherlands
+  'NO', // Norway
+  'PL', // Poland
+  'PT', // Portugal
+  'RO', // Romania
+  'RU', // Russia
+  'SM', // San Marino
+  'RS', // Serbia
+  'SK', // Slovakia
+  'SI', // Slovenia
+  'ES', // Spain
+  'SE', // Sweden
+  'CH', // Switzerland
+  'TR', // Turkey
+  'UA', // Ukraine
+  'GB', // United Kingdom
+  'VA', // Vatican City
+];
 $natoMemberCountries = [
   'AL', // Albania
   'BE', // Belgium
   'BG', // Bulgaria
   'CA', // Canada
   'HR', // Croatia
-  'CZ', // Czechia
+  'CZ', // Czech Republic
   'DK', // Denmark
   'EE', // Estonia
   'FR', // France
@@ -76,19 +128,33 @@ $natoMemberCountries = [
   'TR', // Turkey
   'GB', // United Kingdom
   'US', // United States
+];
+$usMajorAllies = [
   'AU', // Australia
-  'NZ', // New Zealand
+  'CA', // Canada
+  'DK', // Denmark
+  'FR', // France
+  'DE', // Germany
+  'IT', // Italy
   'JP', // Japan
   'KR', // South Korea
+  'NL', // Netherlands
+  'NO', // Norway
+  'ES', // Spain
+  'TR', // Turkey
+  'GB', // United Kingdom
 ];
+
 
 $allowedIPs = ['192.168.1.1']; // Add local IP ranges for country check
 
 $welcome = '';
-if (!in_array($record['countryCode'], $natoMemberCountries) && !in_array($ip, $allowedIPs)) {
+if (!in_array($record['countryCode'], $natoMemberCountries) && !in_array($ip, $allowedIPs) && !in_array($record['countryCode'], $europeanCountries) && !in_array($record['countryCode'], $usMajorAllies)) {
   header('HTTP/1.0 403 Forbidden');
-  echo '<span>Access denied. Non-NATO member countries and non-local IPs are not allowed to access this page.</span><br>';
+  echo '<span>Access denied. Blacklisted country and non-local IPs are not allowed to access this page.</span><br>';
   echo '<span>Your IP address is ' . $ip . ' and your country is ' . $record['countryCode'] . '.</span>';
+  $log_message = 'COUNTRY: Access denied for IP ' . $ip . ' from country ' . $record['countryCode'];
+  error_log($log_message);
   exit;
 } else if (checkProxy($ip)) {
   $allowedCloudflareIps = ['173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22', '141.101.64.0/18', '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20', '197.234.240.0/22', '198.41.128.0/17', '162.158.0.0/15', '104.16.0.0/12', '172.64.0.0/13', '131.0.72.0/22'];
@@ -111,6 +177,8 @@ if (!in_array($record['countryCode'], $natoMemberCountries) && !in_array($ip, $a
     header('HTTP/1.0 403 Forbidden');
     echo '<span>Access denied. Proxy IPs are not allowed to access this page.</span><br>';
     echo '<span>Your IP address is ' . $ip . ' and your country is ' . $record['countryCode'] . '.</span>';
+      $log_message = 'PROXY: Access denied for IP ' . $ip . ' from country ' . $record['countryCode'];
+  error_log($log_message);
     exit;
   }
 } else {

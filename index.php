@@ -53,7 +53,7 @@ echo '<span style="display: none;">'.$welcome .'</span>';
 			?>
 		</ul>
     <marquee behavior="scroll" direction="left" scrollamount="6">
-		<span style="color: red; font-weight: bold;">Latest News: </span> This is the text that will scroll across the marquee.
+		<span style="color: red; font-weight: bold;">Latest News: </span>yeah shits in dev be patient
 	</marquee>
 	</nav>
   <div style="display: flex;"> 

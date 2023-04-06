@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitd643ca12ef8908f694b27aa1bd82e96d
 {
+    public static $prefixLengthsPsr4 = array (
+        'M' => 
+        array (
+            'MaxMind\\Db\\' => 11,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'MaxMind\\Db\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'P' => 
         array (
@@ -18,11 +32,16 @@ class ComposerStaticInitd643ca12ef8908f694b27aa1bd82e96d
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'IP2Location\\Database' => __DIR__ . '/..' . '/ip2location/ip2location-php/IP2Location.php',
+        'IP2Location\\IpTools' => __DIR__ . '/..' . '/ip2location/ip2location-php/IP2Location.php',
+        'IP2Location\\WebService' => __DIR__ . '/..' . '/ip2location/ip2location-php/IP2Location.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd643ca12ef8908f694b27aa1bd82e96d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd643ca12ef8908f694b27aa1bd82e96d::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitd643ca12ef8908f694b27aa1bd82e96d::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd643ca12ef8908f694b27aa1bd82e96d::$classMap;
 
