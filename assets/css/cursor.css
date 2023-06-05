@@ -1,0 +1,80 @@
+html, body {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/default.png), default;
+}
+
+a {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/out.png), pointer;
+}
+
+vcmp {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/compendium.png), pointer;
+}
+
+.cur-confirm {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/confirm.png), pointer;
+}
+.cur-cancel {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/cancel.png), pointer;
+}
+.cur-no, .disabled {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/no.png), pointer;
+}
+
+.cur-action {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/action.png), pointer;
+}
+.cur-copy {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/copy.png), pointer;
+}
+
+.cur-open {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/open.png), pointer;
+}
+.cur-close {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/close.png), pointer;
+}
+
+.cur-up {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/up.png), pointer;
+}
+.cur-upup {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/upup.png), pointer;
+}
+.cur-stay {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/stay.png), pointer;
+}
+.cur-down {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/down.png), pointer;
+}
+.cur-downdown {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/downdown.png), pointer;
+}
+
+.cur-out {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/out.png), pointer;
+}
+
+.cur-dataverse, .dataverse-link {
+	cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/dataverse.png), pointer;
+}
+/*
+     FILE ARCHIVED ON 22:59:50 Nov 28, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:58:30 Dec 21, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  exclusion.robots.policy: 0.166
+  load_resource: 162.277
+  captures_list: 223.615
+  PetaboxLoader3.resolve: 184.207 (2)
+  CDXLines.iter: 13.576 (3)
+  RedisCDXSource: 24.752
+  LoadShardBlock: 149.32 (3)
+  PetaboxLoader3.datanode: 124.769 (4)
+  esindex: 0.01
+  exclusion.robots: 0.177
+*/

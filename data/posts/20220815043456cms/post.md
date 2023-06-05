@@ -1,0 +1,1 @@
+im working on a cms to manage the blog posts, comments (soon), and other aspects of this site!<br><br/>currently, i log into discord on the dev version of the site, and it shows admin buttons, given im logged into the correct account (works off of my id)<br><br/>hopefully u cant spoof the user_id with a cookie or something bc that would suuuuuuck.

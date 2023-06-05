@@ -1,7 +1,0 @@
-{
-    "require": {
-        "erusev/parsedown": "^1.7",
-        "maxmind-db/reader": "~1.0",
-        "ip2location/ip2location-php": "^8.3"
-    }
-}

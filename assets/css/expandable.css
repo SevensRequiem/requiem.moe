@@ -1,0 +1,84 @@
+.expandable {
+	text-align: left;
+}
+
+.expandable .expandable-button {
+	font-family: "Tiny", sans-serif;
+	font-size: 1.5em;
+	display: inline-block;
+	color: #FFF;
+	text-decoration: none;
+}
+
+.expandable .expandable-button::before {
+	content: url('/web/20191128225950im_/https://systemspace.link/res/img/expandable/closed.png');
+	height: 1em;
+	width: 1em;
+	position: relative;
+	left: -0.1em;
+	top: -0.1em;
+	margin-right: 0.2em;
+}
+
+.expandable.open .expandable-button::before {
+	content: url('/web/20191128225950im_/https://systemspace.link/res/img/expandable/opened.png');
+}
+
+.expandable .expandable-inner {
+	max-height: 0;
+	transition: 0.3s max-height ease, 0.3s padding ease;
+	overflow: hidden;
+	border-left: 1px dotted #FFF;
+	padding-left: 0.2em;
+	margin-left: 0.3em;
+	margin-top: -0.3em;
+	padding: 0;
+}
+
+.expandable.open .expandable-inner {
+	max-height: 50em;
+	padding: 0.5em;
+}
+
+.expandable-fake {
+	font-family: "Tiny", sans-serif;
+	font-size: 1.5em;
+	display: block;
+	color: #FFF;
+	text-decoration: none;
+	float: left;
+	text-align: left;
+	width: 100%;
+	margin-bottom: -0.2em;
+}
+
+.expandable-fake::before {
+	content: url('/web/20191128225950im_/https://systemspace.link/res/img/expandable/fake.png');
+	height: 1em;
+	width: 1em;
+	position: relative;
+	left: -0.1em;
+	top: -0.1em;
+	margin-right: 0.2em;
+}
+/*
+     FILE ARCHIVED ON 22:59:50 Nov 28, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:58:30 Dec 21, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 236.729
+  LoadShardBlock: 153.825 (3)
+  PetaboxLoader3.datanode: 127.643 (4)
+  CDXLines.iter: 17.397 (3)
+  exclusion.robots: 0.307
+  load_resource: 77.494
+  RedisCDXSource: 61.244
+  esindex: 0.016
+  PetaboxLoader3.resolve: 94.191 (2)
+  exclusion.robots.policy: 0.285
+*/

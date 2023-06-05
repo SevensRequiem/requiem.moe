@@ -1,0 +1,449 @@
+@font-face {
+    font-family: 'Sawarabi Mincho';
+    src: url('https://web.archive.org/web/20191128225950im_/https://compendium.systemspace.link/res/sawarabimincho.ttf');
+}
+
+@font-face {
+    font-family: 'Kosugi';
+    src: url('https://web.archive.org/web/20191128225950im_/https://compendium.systemspace.link/res/kosugi.ttf');
+}
+
+vcmp {
+    color: #00C788;
+    background-color: #00C78811;
+    display: inline-block;
+    padding: 0.15em 0.1em;
+}
+vcmp:hover {
+    background-color: #00C78822;
+    box-shadow: 0px 0px 8px #00C78822;
+    text-shadow: 0px 0px 4px #00C78899;
+}
+
+#vcmp {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 42em;
+    max-width: 100%;
+    background: url('https://web.archive.org/web/20191128225950im_/https://compendium.systemspace.link/res/paper.png'), #000;
+    z-index: 100000000;
+    box-shadow: 0px 0px 64px #000;
+    isolation: isolate;
+    overflow: hidden;
+    cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/compendium-idle.png), pointer;
+
+    pointer-events: none;
+    opacity: 0;
+    right: -43em;
+
+    transition: 0.3s opacity ease-in, 0.3s right ease-in;
+}
+#vcmp.visible {
+    pointer-events: all;
+    opacity: 1;
+    right: 0;
+
+    transition: 0.3s opacity ease-out, 0.3s right ease-out;
+}
+
+#vcmp-axis1, #vcmp-axis2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: -63px;
+    bottom: 0;
+    background-image: url('https://web.archive.org/web/20191128225950im_/https://compendium.systemspace.link/res/axis.png');
+    background-repeat: repeat;
+    pointer-events: none;
+    transform: rotate(0.0001deg);
+    opacity: 0.25;
+
+    animation: 5s VCMPAxisScroll linear infinite;
+}
+#vcmp-axis2 {
+    animation-direction: reverse;
+    background-position: 0px 16px;
+}
+.no-anim #vcmp-axis1, .no-anim #vcmp-axis2 {
+    animation: none;
+}
+
+#vcmp::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #FFF;
+}
+
+@keyframes VCMPAxisScroll {
+    from {
+        transform: rotate(0.0001deg) translateX(0px);
+    }
+    to {
+        transform: rotate(0.0001deg) translateX(-63px);
+    }
+}
+
+#vcmp-axiscolorize {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: -600%;
+    bottom: 0;
+
+    background: linear-gradient(to right, #00DEFF 0%, #00FF72 20%, #0066FF 40%, #00FFF6 60%, #3000FF 80%, #00DEFF 100%);
+    background-size: 50% 100%;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+
+    transform: translateX(0);
+    animation: 20s VCMPscrole linear infinite;
+}
+.no-anim #vcmp-axiscolorize {
+    animation: none;
+    background: #00FF72;
+}
+
+@keyframes VCMPscrole {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+#vcmp-close {
+    display: inline-block;
+    background: #FFF2;
+    color: #FFF;
+    font-weight: 900;
+    border-radius: 0 0 4px 0;
+    padding: 0.3em;
+    font-size: 1.25em;
+    position: absolute;
+    box-shadow: 0px 0px 8px #FFF5;
+    border-bottom: 1px solid #FFFA;
+    border-right: 1px solid #FFFA;
+    cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/compendium-action.png), pointer;
+    left: 0;
+    top: 0;
+    font-family: 'Sawarabi Mincho', serif;
+}
+
+#vcmp-open {
+    display: block;
+    background: #FFF;
+    color: #000;
+    border-radius: 4px 0 0 4px;
+    padding: 0.3em;
+    font-size: 1.5em;
+    position: absolute;
+    box-shadow: 0px 0px 8px #FFF5;
+    cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/compendium-action.png), pointer;
+    left: 1em;
+    bottom: 1em;
+    right: 0;
+    text-align: center;
+    font-weight: 900;
+    font-family: 'Sawarabi Mincho', serif;
+}
+
+#vcmp-header {
+    display: block;
+    font-size: 2.8em;
+    position: absolute;
+    left: 0.7em;
+    top: 1.5em;
+    right: 0.7em;
+    font-family: 'Sawarabi Mincho', serif;
+    color: #00C788;
+    text-shadow: 0px 0px 4px #00C788AA;
+    border-bottom: 1px solid #00C78833;
+    margin-top: -0.25em;
+    margin-bottom: 0.25em;
+    padding-bottom: 0.15em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 900;
+}
+#vcmp-info {
+    display: block;
+    font-size: 0.7em;
+    position: absolute;
+    left: 2.8em;
+    top: 9.75em;
+    text-align: right;
+    right: 2.8em;
+    font-weight: 500;
+    font-family: 'Sawarabi Mincho', serif;
+    color: #00C78866;
+}
+
+#vcmp-data {
+    display: block;
+    position: absolute;
+    left: 2em;
+    top: 6.8em;
+    bottom: 5em;
+    right: 2em;
+    font-weight: 500;
+    font-family: 'Sawarabi Mincho', serif;
+    overflow-y: auto;
+    padding-top: 0.5em;
+    color: #FFF;
+    line-height: 26px;
+}
+
+#vcmp-data i {
+    font-style: italic;
+    color: #FFF;
+}
+
+#vcmp-data b {
+    color: #00C788;
+    text-shadow: 0px 0px 4px #00C78833;
+    font-weight: 900;
+}
+
+#vcmp-data code {
+    font-family: "Kosugi", "MS Gothic", monospace;
+    display: inline-block;
+    background-color: #00C78811;
+    border: 1px solid #00C78833;
+    padding: 0.1em;
+    border-radius: 3px;
+}
+
+#vcmp-data pre {
+    font-family: "Kosugi", "MS Gothic", monospace;
+    display: block;
+    background-color: #00C78811;
+    border: 1px solid #00C78833;
+    padding: 0.25em;
+    border-radius: 3px;
+}
+
+#vcmp-data blockquote.statement {
+    display: block;
+    margin-left: 0;
+    padding-left: 0.35em;
+    border-left: 2px solid #00C78833;
+    color: #FFF;
+    font-weight: 900;
+}
+
+#vcmp-data blockquote.quote {
+    display: block;
+    margin-left: 0;
+    padding-left: 1em;
+    border-left: 2px solid #00C78833;
+    font-style: italic;
+    color: #00C788;
+}
+
+#vcmp-data blockquote+p+blockquote {
+    margin-top: -1em;
+}
+
+#vcmp-data img {
+    display: inline-block;
+    border: 1px solid #00C78822;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+#vcmp-data .pushtoken {
+    display: block;
+    position: absolute;
+    left: 0.25em;
+    width: 0.5em;
+    height: 0.5em;
+    background-color: #00C78833;
+    margin-top: -0.15em;
+    transform: translateY(-120%);
+}
+
+#vcmp-data .pushtoken.append {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+#vcmp-data .pushtoken.prepend {
+    clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+}
+
+#vcmp-data h1 {
+    margin: 0;
+    color: #00C788DD;
+    text-shadow: 0px 0px 4px #00C78888;
+    border-bottom: 1px solid #00C78822;
+    margin-top: 1em;
+    font-size: 2em;
+
+    transition: 0.2s background-color;
+}
+
+#vcmp-data h2 {
+    margin: 0;
+    color: #FFFD;
+    text-shadow: 0px 0px 4px #FFF8;
+    border-bottom: 1px solid #FFF2;
+    margin-top: 1em;
+    font-size: 1.75em;
+
+    transition: 0.2s background-color;
+}
+
+#vcmp-data h3 {
+    margin: 0;
+    color: #FFFA;
+    text-shadow: 0px 0px 4px #FFF6;
+    border-bottom: 1px solid #FFF1;
+    margin-top: 1em;
+    font-size: 1.5em;
+
+    transition: 0.2s background-color;
+}
+
+#vcmp-data h4 {
+    margin: 0;
+    color: #FFFA;
+    text-shadow: 0px 0px 4px #FFF3;
+    border-bottom: 1px solid #FFF1;
+    margin-top: 1em;
+    font-size: 1.25em;
+
+    transition: 0.2s background-color;
+}
+
+#vcmp-data h5 {
+    margin: 0;
+    color: #FFF;
+    text-shadow: 0px 0px 4px #FFF8;
+    margin-top: 1em;
+    font-size: 1.15em;
+
+    transition: 0.2s background-color;
+}
+
+#vcmp-data h6 {
+    margin: 0;
+    color: #00C788DD;
+    text-shadow: 0px 0px 4px #00C78888;
+    margin-top: 1em;
+    font-size: 1em;
+
+    transition: 0.2s background-color;
+}
+
+#vcmp-data hr {
+    border: none;
+    background-color: #00C78844;
+    height: 1px;
+    margin-top: 2em;
+}
+
+#vcmp-data .hnotify {
+    background-color: #00C78844;
+}
+
+#vcmp-data a.outside,
+#vcmp-data .inlink {
+    display: inline-block;
+    padding: 0 0.1em;
+    border-radius: 3px;
+    color: #00C788;
+    background-color: #00C78811;
+    text-decoration: none;
+    border-bottom: 1px solid #00C788;
+    cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/compendium-action.png), pointer;
+
+    transition: 0.2s background-color;
+}
+#vcmp-data a.outside:hover,
+#vcmp-data .inlink:hover {
+    background-color: #00C78822;
+}
+
+#vcmp-data a.outside::after {
+    content: '⧉';
+    display: inline-block;
+    margin-left: 0.25em;
+    opacity: 0.5;
+}
+
+#vcmp-data .button {
+    display: inline-block;
+    background-color: #00C788;
+    cursor: url(/web/20191128225950im_/https://systemspace.link/res/cursor/compendium-action.png), pointer;
+    text-decoration: none;
+    color: #000D;
+    padding: 0.1em 1.5em;
+    font-size: 2em;
+    font-weight: 900;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px #00C78888;
+
+    transition: 0.3s background-color, 0.3s box-shadow;
+}
+#vcmp-data .button:hover {
+    background-color: #44D7AA;
+    box-shadow: 0px 0px 8px #00C788;
+}
+
+#vcmp-data .center {
+    text-align: center;
+    display: block;
+}
+
+#vcmp-data p {
+    counter-reset: ol;
+}
+#vcmp-data .ol {
+    display: block;
+}
+#vcmp-data .ol::before {
+    counter-increment: ol;
+    content: counter(ol);
+    font-family: "Kosugi", "MS Gothic", monospace;
+    color: #00C788;
+    display: inline-block;
+    min-width: 1.5em;
+    text-align: right;
+}
+
+#vcmp-data .ul {
+    display: block;
+}
+#vcmp-data .ul::before {
+    content: '✻';
+    color: #00C788;
+    display: inline-block;
+    min-width: 1.5em;
+    text-align: right;
+}
+/*
+     FILE ARCHIVED ON 22:59:50 Nov 28, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:58:30 Dec 21, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  exclusion.robots.policy: 0.206
+  PetaboxLoader3.datanode: 65.678 (4)
+  exclusion.robots: 0.221
+  captures_list: 186.696
+  RedisCDXSource: 0.773
+  load_resource: 49.88
+  PetaboxLoader3.resolve: 146.954 (3)
+  esindex: 0.013
+  CDXLines.iter: 15.719 (3)
+  LoadShardBlock: 166.456 (3)
+*/

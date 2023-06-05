@@ -1,0 +1,220 @@
+@font-face {
+	font-family: pixel;
+	src: url(assets/pixel.otf);
+  }
+	  body {
+		  background-image: url("assets/img/bgimage.jpg");
+		  background-position: stretch;
+		  background-attachment: fixed;
+		  background-size: contain;
+		  background-repeat: no-repeat;
+		  }
+	  .no-anim #static {
+		  display: none;
+	  }
+
+	  #static {
+		  position: fixed;
+		  left: 0;
+		  top: 0;
+		  width: 100%;
+		  height: 100%;
+		  z-index: 50;
+		  background-image: url("assets/img/static.gif");
+		  background-repeat: repeat;
+		  opacity: 0.03;
+		  pointer-events: none;
+		  animation: 0.5s StaticIn linear, 3s 0.5s StaticLoop linear alternate infinite;
+	  }
+
+	  #static.fireaway {
+		  animation: 3s okFuckOFF linear forwards;
+	  }
+
+	  @keyframes StaticIn {
+		  0%   { opacity: 1; }
+		  100% { opacity: 0.03; }
+	  }
+
+	  @keyframes StaticLoop {
+		  0%   { opacity: 0.03; }
+		  100% { opacity: 0.1; }
+	  }
+	  .overlay2 {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background-image:url("assets/img/s.gif");
+		opacity: 0.6;
+		pointer-events: none;
+}
+
+.footer  {
+	font-family: pixel;
+	color: #EEF;
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+}	
+/* unvisited link */
+a:link {
+	color: #EEF;
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+	max-width: calc(100%  - 2em);
+	position: relative;
+	z-index: 1000;
+  }
+  
+  /* visited link */
+  a:visited {
+	color: #EEF;
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+	max-width: calc(100%  - 2em);
+	position: relative;
+	z-index: 1000;
+  }
+  
+  /* mouse over link */
+  a:hover {
+	color: rgb(217, 217, 245);
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+	max-width: calc(100%  - 2em);
+	position: relative;
+	z-index: 1000;
+  }
+  
+  /* selected link */
+  a:active {
+	color: #EEF;
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+	max-width: calc(100%  - 2em);
+	position: relative;
+	z-index: 1000;
+  }
+
+  .button {
+	background-color: #000;
+	display: inline-block;
+	font-family: "Heading", sans-serif;
+	font-size: 1.2em;
+	color: #FFF;
+	border: 1px solid #FFF;
+	box-shadow: 0px 3px #FFF;
+	width: 10em;
+	position: relative;
+	top: 0px;
+	padding-top: 0.2em;
+	padding-bottom: 0.1em;
+
+	transition: 0.2s top, 0.2s color, 0.2s background-color, 0.2s box-shadow; 
+}
+
+.button::selection {
+	background-color: inherit;
+	color: inherit;
+}
+.button::-moz-selection {
+	background-color: inherit;
+	color: inherit;
+}
+
+.button:hover {
+	top: 1px;
+	box-shadow: 0px 2px #FFF;
+}
+
+.button:active {
+	top: 2px;
+	box-shadow: 0px 1px #FFF, 0px 1px 10px #FFF;
+	background-color: #FFF;
+	color: #000;
+}
+
+.button.disabled {
+	opacity: 0.5;
+}
+
+.button.big {
+	font-size: 2em;
+	width: 100%;
+}
+
+.button.sized {
+	font-size: 2em;
+	width: 20em;
+}
+
+.button.smolly {
+	font-size: 2em;
+	width: 10em;
+}
+
+.login-box {
+	background-color: rgba(0, 0, 0, 0.8);
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+	border: 1px solid #FFF;
+	padding: 0.5em;
+	width: 40em;
+	box-shadow: 0px 0px 32px #AAF;
+	text-align: center;
+}
+
+.header-block {
+	background-color: #FFF;
+	color: #000;
+	margin: -0.25em;
+	padding: 0.25em;
+	padding-bottom: 0.1em;
+	margin-bottom: 0.25em;
+	font-family: pixel;
+	font-size: 2em;
+	padding-top: 1.5em;
+	margin-top: -1.1em;
+}
+
+.login-box h1 {
+	color: #EEF;
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+	text-align: center;
+	font-family: pixel;
+	font-size: 2em;
+	border-bottom: 1px solid #FFF;
+	margin-bottom: 0.5em;
+	padding-top: 0.3em;
+	padding-bottom: 0.5em;
+}
+
+.login-box p {
+	margin-bottom: 0.5em;
+}
+
+#login-button {
+	font-family: pixel;
+	color: #EEF;
+	text-shadow: 0px 0px 16px #AAF;
+	opacity: 0.8;
+	mix-blend-mode: lighten;
+	width: calc(18em + 2px);
+	margin-top: -1px;
+	margin-bottom: 0.2em;
+}

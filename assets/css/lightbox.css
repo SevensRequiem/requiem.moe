@@ -1,0 +1,70 @@
+@keyframes lbFadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes lbZoomIn {
+	from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+	to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.lb_fullscreen-popup {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.lightbox-container {
+	background-color: rgba(0,0,0,0.6);
+	z-index: 80;
+	overflow-y: auto;
+}
+
+.lightbox-container.animate {
+	animation: lbFadeIn 0.5s;
+}
+
+.lightbox-container.hidden {
+	animation: lbFadeIn 0.5s reverse;
+}
+
+.lightbox {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	max-width: 90%;
+	max-height: 90%;
+	object-fit: contain;
+	transform: translate(-50%, -50%);
+}
+
+.lightbox.animate {
+	animation: lbZoomIn 0.3s;
+}
+
+.lightbox.hidden {
+	animation: lbZoomIn 0.5s reverse;
+}
+/*
+     FILE ARCHIVED ON 22:59:50 Nov 28, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:58:29 Dec 21, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 143.372
+  exclusion.robots: 0.163
+  exclusion.robots.policy: 0.151
+  RedisCDXSource: 11.596
+  esindex: 0.007
+  PetaboxLoader3.resolve: 112.578 (2)
+  load_resource: 406.892
+  CDXLines.iter: 14.277 (3)
+  LoadShardBlock: 114.458 (3)
+  PetaboxLoader3.datanode: 406.235 (4)
+*/

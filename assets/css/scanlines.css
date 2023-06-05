@@ -1,0 +1,72 @@
+html:not(.no-scanlines):not(.force-no-scanlines) body::before {
+	content: "";
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: calc(100% + 32px);
+	height: calc(100% + 32px);
+	background-image: url("/web/20191128225950im_/https://systemspace.link/res/img/scanlines.png");
+	background-position: 0 0;
+	background-repeat: repeat;
+	z-index: 10000000;
+	animation: ScanlineAnimationLeft 2s linear infinite;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+html:not(.no-scanlines):not(.force-no-scanlines) body::after {
+	content: "";
+	display: block;
+	position: fixed;
+	left: -32px;
+	top: 0;
+	width: calc(100% + 32px);
+	height: calc(100% + 32px);
+	background-image: url("/web/20191128225950im_/https://systemspace.link/res/img/scanlines.png");
+	background-position: 0 0;
+	background-repeat: repeat;
+	z-index: 10000000;
+	animation: ScanlineAnimationRight 0.4s linear infinite;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+@keyframes ScanlineAnimationLeft {
+	0% {
+		transform: translateX(0px) translateY(0px);
+	}
+	100% {
+		transform: translateX(-32px) translateY(-32px);
+	}
+}
+
+@keyframes ScanlineAnimationRight {
+	0% {
+		transform: translateX(0px) translateY(0px);
+	}
+	100% {
+		transform: translateX(32px) translateY(-32px);
+	}
+}
+/*
+     FILE ARCHIVED ON 22:59:50 Nov 28, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:58:30 Dec 21, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  PetaboxLoader3.datanode: 179.974 (4)
+  esindex: 0.012
+  exclusion.robots.policy: 0.133
+  RedisCDXSource: 62.624
+  captures_list: 255.432
+  CDXLines.iter: 12.935 (3)
+  load_resource: 43.338
+  PetaboxLoader3.resolve: 30.934
+  exclusion.robots: 0.153
+  LoadShardBlock: 177.01 (3)
+*/

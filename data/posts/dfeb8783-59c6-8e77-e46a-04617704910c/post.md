@@ -1,1 +1,0 @@
-that feeling... yknow, the one when you make something, esp with coding, is euphoric and addicting... im in love with the backend i coded for this site. def mixed with pride, as its a huge accomplishment, always, given my usual mental state!

@@ -1,0 +1,39 @@
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #111;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #FFF;
+} 
+/*
+     FILE ARCHIVED ON 22:59:50 Nov 28, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:58:28 Dec 21, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  RedisCDXSource: 4.392
+  esindex: 0.01
+  PetaboxLoader3.datanode: 105.404 (4)
+  captures_list: 123.901
+  LoadShardBlock: 104.566 (3)
+  exclusion.robots.policy: 0.122
+  CDXLines.iter: 12.134 (3)
+  exclusion.robots: 0.131
+  load_resource: 121.966
+  PetaboxLoader3.resolve: 45.109
+*/

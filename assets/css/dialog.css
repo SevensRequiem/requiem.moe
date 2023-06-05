@@ -1,0 +1,186 @@
+@keyframes FadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes ZoomIn {
+	from { opacity: 0; transform: scale(0.8); }
+	to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes DZoomIn {
+	from { opacity: 0; transform: translateY(-50%) scale(0.8); }
+	to { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+.fullscreen-popup {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.dialog-container {
+	background-color: rgba(0,0,0,0.6);
+	z-index: 80;
+	overflow-y: auto;
+}
+
+.dialog-container.animate {
+	animation: FadeIn 0.5s;
+}
+
+.dialog-container.hidden {
+	animation: FadeIn 0.5s reverse;
+}
+
+.dialog {
+	background-color: #202033;
+	border-radius: 4px;
+	text-align: center;
+	padding: 0.5em;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+	width: 40em;
+	margin-left: calc(50% - 20.5em);
+	margin-top: 50vh;
+	transform: translateY(-50%);
+	text-align: left;
+	color: #CCC;
+}
+
+.dialog.animate {
+	animation: DZoomIn 0.3s;
+}
+
+.dialog.hidden {
+	animation: DZoomIn 0.5s reverse;
+}
+
+.dialog-icon {
+	display: inline-block;
+	float: left;
+	margin: -0.5em;
+}
+
+.dialog-title {
+	text-align: left;
+	margin-top: 0.4em;
+	font-size: 2em;
+	font-family: "Heading", sans-serif;
+	letter-spacing: -6px;
+}
+
+.dialog-text {
+	font-size: 1em;
+}
+
+.dialog-buttons {
+	width: 100%;
+	margin: -0.5em;
+	margin-top: 0.5em;
+	padding: 0.5em;
+	background-color: #0E0E16;
+	text-align: right;
+}
+
+.dialog-button {
+	box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	font-size: 1.5em;
+
+	font-family: "Heading", sans-serif;
+	letter-spacing: -4px;
+	padding: 0.15em;
+	
+	border-radius: 4px;
+	position: relative;
+	cursor: pointer;
+	background-color: #7859CC;
+	color: #1F1735;
+
+	display: inline-block;
+	text-align: center;
+	margin-left: 0.5em;
+
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.dialog-button.confirm {
+	background-color: #FFC342;
+	color: #513D15;
+}
+
+.dialog-button.negative {
+	background-color: #FF4747;
+	color: #280B0B;
+}
+
+.dialog-button:hover {
+	top: 1px;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+.dialog-button:active {
+	background-color: #FFF;
+}
+
+.dialog-close {
+	float: right;
+	cursor: pointer;
+}
+
+.dialog-smallinput {
+	width: 3em;
+}
+
+#jin-pop {
+	position: fixed;
+	left: 0;
+	top: 20%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-top: 2px solid var(--inverse-color);
+	border-bottom: 2px solid var(--inverse-color);
+	font-size: 2em;
+	font-family: "Heading", sans-serif;
+	letter-spacing: -6px;
+	color: #FFF;
+	text-align: center;
+	z-index: 1500000;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	text-shadow: 0px 0px 4px #FFF;
+	opacity: 1;
+	max-height: 2em;
+	transition: 0.3s opacity, 0.3s max-height, 0.3s padding-top, 0.3s padding-bottom;
+	pointer-events: none;
+}
+
+#jin-pop.hidden {
+	opacity: 0;
+	max-height: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+/*
+     FILE ARCHIVED ON 22:59:50 Nov 28, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:58:30 Dec 21, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  exclusion.robots.policy: 0.381
+  load_resource: 122.694
+  esindex: 0.021
+  RedisCDXSource: 3.281
+  exclusion.robots: 0.404
+  captures_list: 81.092
+  PetaboxLoader3.resolve: 48.784
+  LoadShardBlock: 58.33 (3)
+  PetaboxLoader3.datanode: 126.188 (4)
+  CDXLines.iter: 14.619 (3)
+*/
