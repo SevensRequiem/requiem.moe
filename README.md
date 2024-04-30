@@ -1,27 +1,49 @@
-# requiem.moe
-this is my personal website i use to learn various things in linux / php / js / laravel and sometimes node or python.
+# Project AuroraNET
 
+One Paragraph of project description goes here
 
+## Getting Started
 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-# add yourself to the webring:
-want to be added to requiem.moe's webring?
-submit a pull request with your banner (gif/png/jpg) and add your info inside the webring.json file in /webring:
-```
-{
-    "title": "adacayiseverim", // YOUR TITLE
-    "image": "adacayiseverim.png", // YOUR IMAGE
-    "link": "#" // YOUR URL
-  }
+## MakeFile
+
+run all make commands with clean tests
+```bash
+make all build
 ```
 
+build the application
+```bash
+make build
+```
 
-# features:
-### coming in the second half of the 1.4.5 update
-- discord auth that is integrated with admin functions (post/edit/delete/ban)
-- anime tracking
-- live chat / shoutbox
-- blog / blog posting
-- dynamic stars background (benchmarks stars against average fps) `numStars = Math.floor((avgFps / 60) * 1500)`
- -CMS for common places such as motd, links, about, donate, store, projects and blog for easier editing 
+run the application
+```bash
+make run
+```
 
+Create DB container
+```bash
+make docker-run
+```
+
+Shutdown DB container
+```bash
+make docker-down
+```
+
+live reload the application
+```bash
+make watch
+```
+
+run the test suite
+```bash
+make test
+```
+
+clean up binary from the last build
+```bash
+make clean
+```

@@ -1,0 +1,72 @@
+{{ define "content"}}
+<fieldset id="content" class="purpleborder">
+    <legend id="toplegend">
+        About
+        <img src="./assets/icons/coffee-cup.png" alt="Heart" style="width: 1em; height: 1em" />
+        <span id="hitcounter" title="1337"> </span>
+        <script>
+            const hiturl = "./api/stats";
+            async function fetchHits() {
+                let response = await fetch(hiturl);
+                if (response.status === 404) {
+                    console.error("Failed to fetch hits");
+                    return;
+                }
+                let data = await response.json();
+                if (!data.Hits) {
+                    console.error("No hits to display");
+                    return;
+                }
+                const hits = data.Hits.toString().padStart(6, "0");
+                const hitcounter = document.getElementById("hitcounter");
+                hitcounter.innerHTML = "";
+                for (let digit of hits) {
+                    let img = document.createElement("img");
+                    img.src = `./assets/counter/gelbooru${digit}.gif`;
+                    img.alt = digit;
+                    hitcounter.appendChild(img);
+                }
+            }
+            fetchHits();
+        </script>
+    </legend>
+    <div id="about">
+        <h1>About Me</h1>
+        <p>Hi, I'm requiem. I'm a self taught web-dev, and I make things out of boredom. I'm a fan of anime, manga, and
+            video games.</p>
+            <hr>
+        <h1>About This Site</h1>
+        <p>This site is a personal project of mine. It's a place where I can share my thoughts, projects, and other
+            things I find interesting. It's also a place where I can experiment with web technologies.</p>
+            <hr>
+            <h1>Mental Health</h1>
+            <p>I'm a strong advocate for mental health awareness. I believe that mental health is just as important as
+                physical health. As I too struggle with BPD, MDD, GAD, and PTSD, I want to show others that they're not alone.</p>
+                <hr>
+        <h1>Website Info</h1>
+        <p>Here's some info about the site:</p>
+        <ul>
+            <li>Website: <a href="https://requiem.moe">requiem.moe</a></li>
+            <li>Version: v 1.4.7 - No Ai Edition</li>
+            <li>Network:
+                <ul>
+                    <li>Luna <span class="glowgreen">[OK]</span></li>
+                    <h3>Game Servers:</h3>
+                    <li>Ark: Survival Evolved</li>
+                    <li>Conan Exiles</li>
+                    <li>Valheim</li>
+                    <li>7 Days to Die</li>
+                    <li>Space Engineers</li>
+                    <li>Factorio</li>
+                    <li>Stardew Valley</li>
+                    <li>Don't Starve Together</li>
+                    <li>Project Zomboid</li>
+                    <li>Minecraft</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    </div>
+</fieldset>
+{{ end }}

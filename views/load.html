@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Connecting...</title>
+        
+
+<script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+
+
+    </head>
+    <body>
+        <h1>Connecting...</h1>
+        <p>Connecting to the server...</p>
+        <p>Do not close this page.</p>
+        <p>It will automatically redirect to the main page.</p>
+        <p>If it doesn't redirect, click <a href="/">here</a>.</p>
+        <script>
+        const url = "http://192.168.0.201:1337"
+        const delay = 1;
+        // fetch all the assets and then redirect to the main page
+        const assets = [
+            `${url}/assets/css/style.css`,
+            `${url}/assets/css/header.min.css`,
+            `${url}/assets/css/Homepage.min.css`,
+            `${url}/assets/css/main.min.css`,
+            `${url}/assets/css/side.min.css`,
+            `${url}/assets/css/footer.min.css`,
+            `${url}/assets/js/stars.js`,
+            `${url}/assets/js/nav.js`,
+            `${url}/assets/js/sprites.js`,
+
+        ];
+        const promises = assets.map(asset => fetch(asset));
+        Promise.all(promises).then(() => {
+            setTimeout(() => {
+                window.location.href = `${url}/home`;
+            }, delay);
+        });
+
+
+        </script>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</html>

@@ -1,0 +1,137 @@
+{{ define "content" }}
+<fieldset id="content" class="purpleborder">
+  <div id="store">
+  <legend id="toplegend">
+    Store
+    <img src="./assets/icons/store.png" alt="Store" style="width: 1em; height: 1em" />
+  </legend>
+<fieldset>
+  <legend>Merch</legend>
+</fieldset>
+<fieldset>
+  <legend>Items</legend>
+</fieldset>
+<fieldset>
+  <legend>Services</legend>
+  <table>
+    <thead>
+      <td>
+        <img src="./assets/img/server.png" alt="Server" style="width: 3em; height: 3em" />
+      </td>
+      <td>
+        <span>Server</span>
+      </td>
+      <td>
+        <a href="#">Buy</a>
+      </td>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img src="./assets/img/database.png" alt="Database" style="width: 3em; height: 3em" />
+        </td>
+        <td>
+          <span>Database</span>
+        </td>
+        <td>
+          <a href="#">Buy</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="./assets/img/cloud.png" alt="Cloud" style="width: 3em; height: 3em" />
+        </td>
+        <td>
+          <span>Cloud</span>
+        </td>
+        <td>
+          <a href="#">Buy</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="./assets/img/iot.png" alt="IoT" style="width: 3em; height: 3em" />
+        </td>
+        <td>
+          <span>IoT</span>
+        </td>
+        <td>
+          <a href="#">Buy</a>
+        </td>
+      </tr>
+    </tbody>
+    <thead>
+      <td>
+        <img src="./assets/img/webserver.png" alt="Website" style="width: 3em; height: 3em" />
+      </td>
+      <td>
+        <span>Website</span>
+      </td>
+      <td>
+        <a href="#">Buy</a>
+      </td>
+    </thead>
+  </table>
+</fieldset>
+</div>
+</fieldset>
+
+<style>
+  #store {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #store fieldset {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+
+  #store fieldset legend {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  #store table {
+    width: 100%;
+  }
+
+  #store table tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #store table td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #store table td img {
+    margin-right: 1em;
+  }
+
+  #store table td span {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  #store table td a {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+  }
+
+  #store table td a:hover {
+    color: #f00;
+  }
+
+</style>
+
+{{ end }}

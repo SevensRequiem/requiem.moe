@@ -1,0 +1,249 @@
+{{ define "content"}}
+<fieldset id="content" class="purpleborder">
+  <legend id="toplegend">
+    Welcome
+    <img src="./assets/icons/coffee-cup.png" alt="Heart" style="width: 1em; height: 1em" />
+    <span id="hitcounter" title="1337"> </span>
+    <script>
+      const hiturl = "./api/stats";
+      async function fetchHits() {
+        let response = await fetch(hiturl);
+        if (response.status === 404) {
+          console.error("Failed to fetch hits");
+          return;
+        }
+        let data = await response.json();
+        if (!data.Hits) {
+          console.error("No hits to display");
+          return;
+        }
+        const hits = data.Hits.toString().padStart(6, "0");
+        const hitcounter = document.getElementById("hitcounter");
+        hitcounter.innerHTML = "";
+        for (let digit of hits) {
+          let img = document.createElement("img");
+          img.src = `./assets/counter/gelbooru${digit}.gif`;
+          img.alt = digit;
+          hitcounter.appendChild(img);
+        }
+      }
+      fetchHits();
+    </script>
+  </legend>
+  <div id="welcome">
+    <p>Welcome to requiem.moe, my personal website.</p>
+    <p>Say Hello!</p>
+    <div id="donationtotal">
+      <a href="/donate" id="donate"><img src="./assets/icons/growth.png" style="width: 2em; height: auto" /></a>
+      <span id="donation"> $63.25</span>
+      <img src="./assets/icons/investment.png" style="width: 2em; height: auto" />
+    </div>
+  </div>
+  <div id="topwrap">
+    <div id="chat">
+      <div id="chatstatus"></div>
+      <div id="chatbox"></div>
+      <form id="chatinput">
+        <span>Username: <span id="username">{{ if .User }}{{ .User }}{{ else }}{{ .randUser }}{{ end }}</span></span>
+        <input type="text" id="chatmessage" placeholder="Type your message here..." />
+        <a href="#" onclick="sendMessage()">Send</a> <!-- Changed anchor tag to submit button -->
+      </form>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script>
+        const chatinput = document.getElementById("chatinput");
+        const chatmessage = document.getElementById("chatmessage");
+        const username = document.getElementById("username");
+        const chatstatus = document.getElementById("chatstatus");
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        async function sendMessage() {
+          const message = chatmessage.value;
+          const user = username.textContent;
+          const formData = new FormData();
+          formData.append('message', message);
+          formData.append('username', user);
+          try {
+            const response = await axios.post("/send-message", formData, {
+              headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+            if (response.status !== 200) {
+              console.error("Failed to send message. Status:", response.status, "Response data:", response.data);
+              chatstatus.innerHTML = "Failed to send message";
+              chatstatus.style.color = "red";
+              return;
+            }
+            console.log("Message sent successfully");
+            chatstatus.innerHTML = "Message sent successfully";
+            chatstatus.style.color = "green";
+          } catch (error) {
+            console.error("Error sending message:", error.message, "Stack trace:", error.stack);
+            chatstatus.innerHTML = "Failed to send message";
+            chatstatus.style.color = "red";
+          }
+        }
+      </script>
+
+      <script>
+        const url = "./get-messages";
+        const chatbox = document.getElementById("chatbox");
+        async function fetchMessages() {
+          let response = await fetch(url);
+          if (response.status === 404) {
+            console.error("Failed to fetch messages");
+            return;
+          }
+          let messages = await response.json();
+          if (messages.length === 0) {
+            console.log("No messages to display");
+            return;
+          }
+          for (let message of messages) {
+            let messageDiv = document.createElement("div");
+            messageDiv.className = "message";
+            let timestamp = new Date(message.TimeStamp * 1000);
+            messageDiv.innerHTML = `
+              <img src="./assets/icons/users.png" alt="User" style="width: 1em; height: 1em;">
+              <span class="username">${message.Username}</span>
+              <span class="timestamp">${timestamp}</span>
+              <p>${message.Message}</p>
+              {{ if .IsAdmin  }}
+              <a href="#" onclick='deleteMessage("${message.UUID}")'>Delete</a>
+              <a href="https://whatismyipaddress.com/ip/${message.IP_address}" target="_blank">${message.IP_address}</a>
+              <a href="#" onclick="banIP(${message.IP_address})">BanIP</a>
+
+              {{ end }}
+            `;
+            chatbox.appendChild(messageDiv);
+          }
+          chatbox.scrollTop = chatbox.scrollHeight;
+          OsFont.compile();
+        }
+        fetchMessages();
+
+      </script>
+      <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
+      <script>
+        const pusher = new Pusher('ef30fc2c859a6502d84e', {
+          cluster: 'us2'
+        });
+        const livechat = document.getElementById("chatbox");
+        const channel = pusher.subscribe('chat');
+        channel.bind('new_message', function (data) {
+          let messageDiv = document.createElement("div");
+          messageDiv.className = "message";
+          let timestamp = new Date(data.timestamp);
+          messageDiv.innerHTML = `
+            <img src="./assets/icons/users.png" alt="User" style="width: 1em; height: 1em;">
+            <span class="username">${data.username}</span>
+            <span class="timestamp">${timestamp.toLocaleString()}</span>
+            <p>${data.message}</p>
+          `;
+          livechat.appendChild(messageDiv);
+          
+          livechat.scrollTop = livechat.scrollHeight;
+          OsFont.compile();
+        });
+      </script>
+      
+      {{ if .IsAdmin }}
+      <script>
+        async function deleteMessage(uuid) {
+          const url = "/delete-message/" + uuid;
+          const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+          try {
+            const response = await fetch(url, {
+              method: 'DELETE',
+              headers: {
+                'X-CSRF-Token': csrfToken
+              }
+            });
+            if (response.status !== 200) {
+              console.error("Failed to delete message. Status:", response.status, "Response data:", await response.text());
+              return;
+            }
+            console.log("Message deleted successfully");
+            fetchMessages();
+          } catch (error) {
+            console.error("Error deleting message:", error.message, "Stack trace:", error.stack);
+          }
+        }
+      </script>
+      {{ end }}
+    </div>
+    
+  </div>
+
+  <div id="animewrap">
+    <div id="anime">
+      <script>
+        const animeurl = "./api/fetchanime";
+        const animewrapper = document.getElementById("anime");
+
+        async function fetchAnime() {
+          try {
+            const response = await fetch(animeurl);
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            displayAnime(data);
+          } catch (error) {
+            console.error("Failed to fetch anime:", error);
+            animewrapper.textContent = "Failed to load anime. Please try again later.";
+          }
+        }
+
+        function displayAnime(data) {
+          for (let index = 0; index < 3; index++) {
+            const item = data[index];
+            const animebox = document.createElement("div");
+            const datecompleted = new Date(item.DateCompleted);
+            const formattedDate = datecompleted.toLocaleDateString();
+            animebox.className = "animebox";
+            animebox.innerHTML = `
+            
+              <img src="${item.CoverImage}" alt="Anime" style="width: 6em; height: auto">
+              <ul>
+              <li><span class="date">${formattedDate}</span></li>
+              <li><span class="title">${item.Title}</span></li>
+              <li><span class="episode">ep: ${item.Episode}</span></li>
+              <li><span class="status">${item.WatchStatus}</span></li>
+            </ul>
+            `;
+            animewrapper.appendChild(animebox);
+          }
+        }
+
+        fetchAnime();
+      </script>
+    </div>
+  </div>
+
+  <div id="hardwaredonations">
+    <p>Now accepting Hardware donations!</p>
+    <span>Hardware Accepted:</span>
+    <ul>
+      <li>RAM</li>
+      <li>CPUs</li>
+      <li>GPUs</li>
+      <li>SSDs</li>
+      <li>HDDs</li>
+      <li>Monitors</li>
+      <li>Computers</li>
+      <li>Servers</li>
+      <li>Networking Equipment</li>
+      <li>Peripherals</li>
+      <li>PSUs</li>
+      <li>UPSs</li>
+      <li>Racks</li>
+      <li>coax: cables, merger/splitter, antenna</li>
+    </ul>
+    <p>
+      please contact me at
+      <a href="mailto:hardware@requiem.moe">hardware@requiem.moe</a> for more.
+    </p>
+  </div>
+</fieldset>
+{{ end }}

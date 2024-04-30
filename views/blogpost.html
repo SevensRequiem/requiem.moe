@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Blog Post</legend>
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div>
+                <label for="post">Post:</label>
+                <textarea id="post" name="post"></textarea>
+            </div>
+            <div>
+                <label for="image">Image:</label>
+                <input type="text" id="image" name="image">
+            </div>
+            <div>
+                <label for="tags">Tags:</label>
+                <input type="text" id="tags" name="tags">
+            </div>
+            <div>
+                <label for="quote">Quote:</label>
+                <input type="text" id="quote" name="quote">
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </fieldset>
+    </form>
+    <script>
+        window.onload = async function() {
+            const form = document.querySelector('form');
+            form.onsubmit = async function(event) {
+                event.preventDefault();
+                const title = document.querySelector('#title').value;
+                const author = document.querySelector('#author').value;
+                const post = document.querySelector('#post').value;
+                const image = document.querySelector('#image').value;
+                const tags = document.querySelector('#tags').value;
+                const quote = document.querySelector('#quote').value;
+                const response = await fetch('/blog', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: title,
+                        author: author,
+                        post: post,
+                        image: image,
+                        tags: tags,
+                        quote: quote
+                    })
+                });
+            }
+        }
+    </script>
+</body>
+</html>

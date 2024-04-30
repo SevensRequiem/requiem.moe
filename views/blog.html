@@ -1,0 +1,274 @@
+{{ define "content" }}
+{{ if .IsAdmin }}
+<div id="blogform">
+<form id="form" method="POST" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Blog Post</legend>
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title">
+        </div>
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author">
+        </div>
+        <div>
+            <label for="post">Post:</label>
+            <textarea id="post" name="post"></textarea>
+        </div>
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image">
+        </div>
+        <div>
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" name="tags">
+        </div>
+        <div>
+            <label for="quote">Quote:</label>
+            <input type="text" id="quote" name="quote">
+        </div>
+        <div>
+            <div>
+                <a href="#" id="submitLink">Submit</a>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div id="markdownpreview">
+    <fieldset>
+        <legend>Markdown Preview</legend>
+        <div id="preview">
+            <fieldset id="blogfieldset"><legend id="bloglegend"><span class="glowlightgreen">[#37]</span>[<span class="blogdate">4/10/2024</span>][<span class="blogtitle">tba</span>]<span class="blogauthor">requiem.moe</span></legend>
+            <div id="blogpost"><img src="./blog/images/PZdJCByyTXWugF5c.jpg"><div id="blogcontent"><p></p></div><div id="blogtags"></div></div></fieldset>
+        </div>
+    </fieldset>
+    <script>
+        const preview = document.querySelector('#preview');
+        const post = document.querySelector('#post');
+        const title = document.querySelector('#title');
+        const author = document.querySelector('#author');
+        const image = document.querySelector('#image');
+        const tags = document.querySelector('#tags');
+        const quote = document.querySelector('#quote');
+
+        post.addEventListener('input', (event) => {
+            preview.querySelector('p').textContent = post.value;
+        });
+
+        title.addEventListener('input', (event) => {
+            preview.querySelector('.blogtitle').textContent = title.value;
+        });
+
+        author.addEventListener('input', (event) => {
+            preview.querySelector('.blogauthor').textContent = author.value;
+        });
+
+        image.addEventListener('change', (event) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                preview.querySelector('img').src = event.target.result;
+            };
+            reader.readAsDataURL(image.files[0]);
+        });
+
+        tags.addEventListener('input', (event) => {
+            preview.querySelector('.blogtags').textContent = tags.value;
+        });
+
+        quote.addEventListener('input', (event) => {
+            preview.querySelector('.blogquote').textContent = quote.value;
+        });
+    </script>
+</div>
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const form = document.querySelector('form');
+        const submitLink = document.querySelector('#submitLink');
+
+        submitLink.addEventListener('click', async (event) => {
+            event.preventDefault();
+
+            const title = document.querySelector('#title').value;
+            const author = document.querySelector('#author').value;
+            const post = document.querySelector('#post').value;
+            const image = document.querySelector('#image').files[0];
+            const tags = document.querySelector('#tags').value;
+            const quote = document.querySelector('#quote').value;
+            const _token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('author', author);
+            formData.append('post', post);
+            formData.append('tags', tags);
+            formData.append('quote', quote);
+            if (image) {
+                formData.append('image', image, image.name);
+            }
+
+            console.log('Submitting form...');
+
+            try {
+                    const _token = document.cookie
+                        .split('; ')
+                        .find(row => row.startsWith('_csrf='))
+                        .split('=')[1];
+
+                    const response = await fetch('/blog', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': _token
+                        },
+                    });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                console.log('Form submitted successfully');
+            } catch (error) {
+                console.error('Error submitting form:', error);
+            }
+        });
+    });
+</script>
+{{ end }}
+<fieldset id="content" class="purpleborder">
+    <legend id="toplegend">Blog
+        <img src="./assets/icons/coffee-cup.png" alt="Heart" style="width: 1em; height: 1em;">
+        <span id="hitcounter" title="1337">
+            
+        </span>
+        <script>
+          const hiturl = "./api/stats";
+  
+          async function fetchHits() {
+            let response = await fetch(hiturl);
+            if (response.status === 404) {
+              console.error('Failed to fetch hits');
+              return;
+            }
+            let data = await response.json();
+            if (!data.Hits) {
+              console.error('No hits to display');
+              return;
+            }
+            const hits = data.Hits.toString().padStart(6, '0');
+            const hitcounter = document.getElementById('hitcounter');
+            hitcounter.innerHTML = '';
+            for (let digit of hits) {
+              let img = document.createElement('img');
+              img.src = `./assets/counter/gelbooru${digit}.gif`;
+              img.alt = digit;
+              hitcounter.appendChild(img);
+            }
+          }      
+          fetchHits();
+          </script>
+    </legend>
+    <div id="blog">
+    <div id="blogmenu">
+        {{ if .IsAdmin }}
+        <a href="#" onclick="document.getElementById('blogform').style.display = 'block'">New Post</a>
+        <hr>
+        {{ end }}
+        <div id="tags">
+            <a href="#">All <span id="allcount">0</span></a>
+            <a href="#">Anime <span id="animecount">0</span></a>
+            <a href="#">Manga <span id="mangacount">0</span></a>
+            <a href="#">Games <span id="gamescount">0</span></a>
+            <a href="#">Music <span id="musiccount">0</span></a>
+            <a href="#">Movies <span id="moviescount">0</span></a>
+            <a href="#">Books <span id="bookscount">0</span></a>
+            <a href="#">Tech <span id="techcount">0</span></a>
+            <a href="#">Art <span id="artcount">0</span></a>
+            <a href="#">Mental Health <span id="mentalhealthcount">0</span></a>
+            <a href="#">Life <span id="lifecount">0</span></a>
+        </div>
+    </div>
+    <div id="blogContainer">
+    </div>
+    </div>
+</fieldset>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    window.onload = async function() {
+        const blogContainer = document.querySelector('#blogContainer');
+        let id = 1;
+        while (true) {
+            try {
+                const response = await fetch(`/blog/${id}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const post = await response.json();
+
+                const fieldset = document.createElement('fieldset');
+                fieldset.id = "blogfieldset";
+
+                const legend = document.createElement('legend');
+                legend.id = "bloglegend";
+                legend.innerHTML = `<span class="glowlightgreen" class="blogid">[#${post.id}]</span>
+                                    [<span class="blogdate">${new Date(post.date_created).toLocaleDateString()}</span>]
+                                    [<span class="blogtitle">${post.title}</span>]
+                                    <span class="blogauthor">${post.author}</span>
+                                    <span class="blogquote" style="background-color: ${post.hex};">${post.quote}</span>`;
+                fieldset.appendChild(legend);
+
+                const div = document.createElement('div');
+                div.id = "blogpost";
+
+                const img = document.createElement('img');
+                img.src = post.image;
+                div.appendChild(img);
+
+                const content = document.createElement('div');
+                content.id = "blogcontent";
+                const p = document.createElement('div');
+                p.id = "blogpostcontent";
+                p.innerHTML = marked.parse(post.post); // Use window.marked to parse the Markdown text
+                content.appendChild(p);
+                div.appendChild(content);
+
+                fieldset.appendChild(div);
+                const blogtags = document.createElement('span');
+                blogtags.id = "blogtags";
+                blogtags.innerHTML = `<span class="blogtag">${post.tags}</span>`;
+                fieldset.appendChild(blogtags);
+
+                {{ if .IsAdmin }}
+                const del = document.createElement('a');
+                const edit = document.createElement('a');
+                del.href = `/blog/${post.id}`;
+                del.innerHTML = `<span class="glowlightred">[del]</span>`;
+                edit.href = `/blog/edit/${post.id}`;
+                edit.innerHTML = `<span class="glowlightblue">[edit]</span>`;
+
+                legend.appendChild(del);
+                legend.appendChild(edit);
+                {{ end }}
+                blogContainer.appendChild(fieldset);
+                fieldset.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+                id++;
+            } catch (error) {
+                if (error.message.includes('404')) {
+                    OsFont.compile();
+                    break;
+                } else {
+                    console.error('Error:', error);
+                    break;
+                }
+            }
+        }
+
+        // Scroll to the bottom of the page after a delay
+        setTimeout(() => {
+            window.scrollTo(0, document.body.scrollHeight);
+        }, 100);
+    };
+</script>
+
+{{ end }}

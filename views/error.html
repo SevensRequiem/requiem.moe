@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error: {{ .code }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @font-face {
+            font-family: 'pix';
+            src: url('./assets/fonts/pix.ttf') format('truetype');
+        }
+        body {
+            font-family: 'pix', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #000000;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            animation: glow 1s infinite;
+
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        p {
+            color: #ffffff;
+        }
+
+        a {
+            color: #33ff00;
+            background-color: #333;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+            }
+            100% {
+                text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff, 0 0 90px #ff00ff;
+            }
+            
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Error: {{ .code }}</h1>
+        <script>
+            const errorcode = {{ .code }};
+            if (errorcode === 400) {
+                document.write('<p>Bad Request: The server could not understand the request due to invalid syntax.</p>');
+            } else if (errorcode === 401) {
+                document.write('<p>Unauthorized: The client must authenticate itself to get the requested response.</p>');
+            } else if (errorcode === 403) {
+                document.write('<p>Forbidden: The client does not have access rights to the content.</p>');
+            } else if (errorcode === 404) {
+                document.write('<p>Not Found: The server can not find the requested resource.</p>');
+            } else if (errorcode === 405) {
+                document.write('<p>Method Not Allowed: The method specified in the request is not allowed for the resource identified by the request URI.</p>');
+            } else if (errorcode === 500) {
+                document.write('<p>Internal Server Error: The server has encountered a situation it doesn\'t know how to handle.</p>');
+            } else if (errorcode === 502) {
+                document.write('<p>Bad Gateway: The server, while acting as a gateway or proxy, received an invalid response from the upstream server.</p>');
+            } else if (errorcode === 503) {
+                document.write('<p>Service Unavailable: The server is not ready to handle the request.</p>');
+            } else {
+                document.write('<p>Sorry, something went wrong.</p>');
+            }
+        </script>
+        <a href="/">Go back</a>
+    </div>
+
+</html>

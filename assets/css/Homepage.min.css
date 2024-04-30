@@ -1,0 +1,244 @@
+#contentbox {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-areas: 
+        "chat social anime" 
+        "banner misc misc";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 1px;
+    margin: 5px;
+    grid-gap: 33px;
+}
+#chat {
+  grid-area: chat;
+  max-height: calc(70vh - 50px);
+  height: 100%;
+  text-align: center;
+}
+#chatbox {
+  padding-top: 15%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+}
+#chatboxformwrapper {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  overflow-x: hidden;
+  border-top: #0f0 1px solid;
+}
+#chatboxmsg {
+  color: #0f0;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  z-index: 5;
+}
+#chatbox p {
+  word-wrap: break-word;
+  padding: 5px;
+  margin: 1px;
+}
+.chattimestamp {
+  color: #a79604;
+  text-align: center;
+  font-size: x-small;
+}
+.chatuser {
+  color: #0f8;
+  text-align: center;
+}
+.chatmessage {
+  color: #0ff;
+  text-align: center;
+}
+#chatboxmsginput {
+  color: rgb(182, 174, 255);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-style: none;
+  text-align: center;
+}
+#chatboxmsgsubmit {
+  color: #0f0;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-style: none;
+}
+#chatusername {
+  color: rgb(26, 221, 52);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-style: none;
+  text-align: center;
+}
+.chatusername {
+  color: rgb(26, 221, 52);
+}
+.chatid {
+  color: rgb(56, 56, 56);
+}
+.orb {
+  width: 13px;
+  height: 13px;
+  background: rgb(0, 251, 255);
+  border-radius: 50%;
+  position: fixed;
+  display: none;
+  z-index: 9999;
+  animation: glow 1.5s infinite;
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px 5px rgb(0, 255, 251), 0 0 20px 10px rgb(0, 221, 255),
+      0 0 30px 15px rgb(0, 136, 255), 0 0 40px 20px rgb(76, 0, 255);
+  }
+  50% {
+    box-shadow: 0 0 10px 5px rgb(0, 136, 255), 0 0 20px 10px rgb(76, 0, 255),
+      0 0 30px 15px rgb(0, 255, 251), 0 0 40px 20px rgb(0, 221, 255);
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgb(0, 255, 251), 0 0 20px 10px rgb(0, 221, 255),
+      0 0 30px 15px rgb(0, 136, 255), 0 0 40px 20px rgb(76, 0, 255);
+  }
+}
+#main {
+  grid-area: social;
+  max-height: calc(70vh - 50px);
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  overflow-y: auto;
+}
+#anime {
+  grid-area: anime;
+  max-height: calc(70vh - 50px);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+.anime-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.anime-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.anime-list .anime {
+  display: flex;
+  align-items: center;
+}
+.anime-list img {
+  width: auto;
+  height: 100px;
+  margin-right: 10px;
+}
+.anime-list .info {
+  display: flex;
+  flex-direction: column;
+}
+#banner {
+  grid-area: banner;
+  height: 13vh;
+}
+#banner img {
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ec7200;
+  opacity: 0.7;
+}
+#misc {
+  grid-area: misc;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+}
+#webring img {
+  width: auto;
+  max-height: 25px;
+  border: 2px solid transparent;
+  animation: rotate 2s linear infinite;
+}
+#webring a {
+  width: auto;
+  max-height: 25px;
+}
+@keyframes rotate {
+  0% {
+    border-top-color: red;
+    border-right-color: orange;
+    border-bottom-color: yellow;
+    border-left-color: green;
+  }
+  25% {
+    border-top-color: green;
+    border-right-color: red;
+    border-bottom-color: orange;
+    border-left-color: yellow;
+  }
+  50% {
+    border-top-color: yellow;
+    border-right-color: green;
+    border-bottom-color: red;
+    border-left-color: orange;
+  }
+  75% {
+    border-top-color: orange;
+    border-right-color: yellow;
+    border-bottom-color: green;
+    border-left-color: red;
+  }
+  100% {
+    border-top-color: red;
+    border-right-color: orange;
+    border-bottom-color: yellow;
+    border-left-color: green;
+  }
+}
+
+
+#domains {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#domains div {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 10em;
+    overflow: auto;
+}
+#domains div span {
+    text-align: center;
+    display: block;
+}
+
+#globalstats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#globalstats div {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 10em;
+    overflow: auto;
+}

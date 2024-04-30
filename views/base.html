@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>// requiem.moe</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/os-font.css" />
+<!-- Ezoic Code -->
+<script src="//www.ezojs.com/basicads.js?d=requiem.moe" type="text/javascript"></script>
+<!-- Ezoic Code -->
+    <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+    <meta name="csrf-token" content="{{.csrf}}">
+    <meta name="country" content="{{.country}}">
+    <meta name="user" content="{{ if .User }}{{ .User }}{{ else }}{{ .randUser }}{{ end }}">
+    <meta name="description" content="A personal Website">
+    <meta name="keywords" content="personal, website, blog, projects, store, contact, anime, cyberpunk, technology">
+    <meta name="author" content="SevensRequiem">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+
+    <script>
+        const title = "// requiem.moe"
+        const one = ".";
+        const two = "..";
+        const three = "...";
+
+        function animateTitle() {
+            document.title = title + one;
+            setTimeout(() => {
+                document.title = title + two;
+            }, 500);
+            setTimeout(() => {
+                document.title = title + three;
+            }, 1000);
+            setTimeout(() => {
+                document.title = title;
+            }, 1500);
+        }
+        
+        setInterval(animateTitle, 2000);
+    </script>
+
+<audio autoplay loop id="g">  
+    <source src="./assets/sfx/g.mp3" type="audio/mp3">  
+</audio>  
+<audio autoplay loop id="p">  
+    <source src="./assets/sfx/p.mp3" type="audio/mp3">  
+</audio>  
+<audio autoplay id="r">  
+    <source src="./assets/sfx/r.mp3" type="audio/mp3">  
+</audio>  
+<script>
+var audio = document.getElementById("g");
+audio.volume = 0.4;
+</script>
+<script>
+var audio = document.getElementById("p");
+audio.volume = 0.04;
+</script>
+<script>
+var audio = document.getElementById("r");
+audio.volume = 0.2;
+</script>
+</head>
+
+<body>
+    <canvas id="stars"></canvas>
+    <div id="tileoverlay"></div>
+    <div id="static"></div>
+    <script>
+        const canvas = document.getElementById('stars');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const ctx1 = canvas.getContext('2d');
+
+        const stars = [];
+
+
+
+        
+        const minNumStars = 400;
+        const maxNumStars = 400;
+        const minStarSize = 0.1;
+        const maxStarSize = 3;
+        const minStarSpeed = 0.1;
+        const maxStarSpeed = 1;
+        const minStarOpacity = 0.8;
+        const maxStarOpacity = 1;
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * (maxStarSize - minStarSize) + minStarSize;
+                this.speed = Math.random() * (maxStarSpeed - minStarSpeed) + minStarSpeed;
+                this.opacity = Math.random() * (maxStarOpacity - minStarOpacity) + minStarOpacity;
+                this.color = this.randcolor();
+            }
+
+            randcolor() {
+                const colors = ['#9db4ff', '#aabfff', '#cad7ff', '#f8f7ff', '#fff4ea', '#ffd2a1', '#ffcc6f', '#ffda95', '#f8c95f', '#ffc875'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x -= this.speed;
+                if (this.x < 0) {
+                    this.x = canvas.width;
+                }
+            }
+
+            draw() {
+                ctx1.shadowBlur = 13;
+                ctx1.shadowColor = this.color;
+                ctx1.fillStyle = this.color;
+                ctx1.globalAlpha = this.opacity;
+                ctx1.beginPath();
+                ctx1.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx1.closePath();
+                ctx1.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < Math.random() * (maxNumStars - minNumStars) + minNumStars; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        function animate() {
+            ctx1.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+
+        animate();
+           
+    </script>
+    <header>
+        <div id="headwrap">
+            <h1 title="ಠ_ಠ">// requiem.moe</h1>
+            <span id="slogan">Close the world. Open the Next.</span>
+            {{ if .User}}
+            <a href="/logout" id="login">Logout</a>
+            {{else}}
+            <a href="/login" id="login">Login</a>
+            {{end}}
+
+            <nav>
+                <a href="/home">Home</a>
+                <a href="/about">About</a>
+                <nav id="tools">
+                    <ul>
+                        <li><a href="/tools">Tool 1</a></li>
+                        <li><a href="/tools">Tool 2</a></li>
+                        <li><a href="/tools">Tool 3</a></li>
+                        <li><a href="/tools">Tool 4</a></li>
+                        <li><a href="/tools">Tool 5</a></li>
+                    </ul>
+                </nav>
+                <!--<a href="#" onclick="loadTools()">Tools</a>
+
+                <a href="/projects">Projects</a>-->
+                <a href="/blog">Blog</a>
+                <!--<a href="/store">Store</a>-->
+                <a href="mailto:webmaster@requiem.moe">Contact</a>
+
+                <script>
+                    
+                </script>
+
+            </nav>
+        </div>
+        <marquee scrollamount="3">
+            <span>store, projects, tools, and version history coming soon !</span> // 
+            <span>farkas is dumb</span> // 
+            <span>rumia is high</span> // 
+            <span>req is dying of boredom</span>
+        </marquee>
+    </header>
+    <div id="musicplayer">
+        <div id="player">
+            <audio>
+                <source src="./assets/music/1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <span id="song">Song Title</span>
+            <span id="time">00:00:00</span>
+            <hr>
+            <span id="controls">
+                <a href="#" id="play">Play</a>
+                <a href="#" id="pause">Pause</a>
+                <a href="#" id="next">Next</a>
+                <a href="#" id="prev">Prev</a>
+                <a href="#" id="volup">Vol +</a>
+                <a href="#" id="voldown">Vol -</a>
+                <span id="volume">[==========]</span>
+            </span>
+        </div>
+        <script>
+            const player = document.getElementById('player');
+            const audio = player.querySelector('audio');
+            const song = player.querySelector('#song');
+            const time = player.querySelector('#time');
+            const play = player.querySelector('#play');
+            const pause = player.querySelector('#pause');
+            const next = player.querySelector('#next');
+            const prev = player.querySelector('#prev');
+            const volup = player.querySelector('#volup');
+            const voldown = player.querySelector('#voldown');
+            const volume = player.querySelector('#volume');
+            const songs = [
+                {
+                    title: 'Song 1',
+                    file: './assets/music/1.mp3'
+                },
+                {
+                    title: 'Song 2',
+                    file: './assets/music/2.mp3'
+                },
+                {
+                    title: 'Song 3',
+                    file: './assets/music/3.mp3'
+                }
+            ];
+            let currentSong = 0;
+            audio.src = songs[currentSong].file;
+            audio.volume = 0.01; // Set initial volume to 0.01
+
+            song.textContent = songs[currentSong].title;
+            audio.addEventListener('timeupdate', () => {
+                const minutes = Math.floor(audio.currentTime / 60);
+                const seconds = Math.floor(audio.currentTime % 60);
+                time.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            });
+            play.addEventListener('click', () => {
+                audio.play();
+            });
+            pause.addEventListener('click', () => {
+                audio.pause();
+            });
+            next.addEventListener('click', () => {
+                currentSong = (currentSong + 1) % songs.length;
+                audio.src = songs[currentSong].file;
+                song.textContent = songs[currentSong].title;
+                audio.play();
+            });
+            prev.addEventListener('click', () => {
+                currentSong = (currentSong - 1 + songs.length) % songs.length;
+                audio.src = songs[currentSong].file;
+                song.textContent = songs[currentSong].title;
+                audio.play();
+            });
+            volup.addEventListener('click', () => {
+                if (audio.volume < 1) {
+                    audio.volume += 0.1;
+                    volume.textContent = volume.textContent + '|';
+                }
+            });
+            voldown.addEventListener('click', () => {
+                if (audio.volume > 0) {
+                    audio.volume -= 0.1;
+                    volume.textContent = volume.textContent.slice(0, -1);
+                }
+            });
+
+        </script>
+    </div>
+    <div id="bannerad">
+
+    </div>
+</script>
+    </div>
+    <div id="main">
+        <div id="topbar">
+            <div id="topbarleft">
+                <span id="soltime">00:00:00</span>
+                <span id="soldate">Sol : 00000</span>
+            </div>
+            <script>
+                function calculateSolDate() {
+                    const currentDate = new Date();
+                    const totalDays = (currentDate.getFullYear() - 1991) * 365 + calculateLeapYears(currentDate.getFullYear()) + calculateDaysInYear(currentDate.getMonth(), currentDate.getDate());
+                    document.getElementById('soldate').textContent = `Sol : ${totalDays}`;
+                }
+                function calculateLeapYears(year) {
+                    let count = 0;
+                    for (let i = 1991; i < year; i++) {
+                        if ((i % 4 === 0 && i % 100 !== 0) || (i % 400 === 0)) {
+                            count++;
+                        }
+                    }
+                    return count;
+                }
+                function calculateDaysInYear(month, day) {
+                    const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                    let totalDays = 0;
+                    for (let i = 0; i < month; i++) {
+                        totalDays += daysInMonth[i];
+                    }
+                    totalDays += day;
+                    return totalDays;
+                }
+                calculateSolDate();
+                function updateTime() {
+                    const currentDate = new Date();
+                    const hours = currentDate.getHours();
+                    const minutes = currentDate.getMinutes();
+                    const seconds = currentDate.getSeconds();
+                    document.getElementById('soltime').textContent = `${hours}:${minutes}:${seconds}`;
+                }
+                setInterval(updateTime, 1000);
+            </script>
+            <div id="topbarmiddle">
+                <span id="weather">Weather: 0°C</span>
+                <img src="./assets/icons/sun.png" alt="Sun" style="width: 1em; height: 1em;">
+                <span id="location">Location: {{ .Country }}</span>
+            </div>
+            <div id="topbarright">
+                <span id="user">User: {{ if .User }}{{ .User }}{{ else }}{{ .randUser }}{{ end }}</span>
+                <br>
+                <span id="status">Status: Online</span>
+            </div>
+        </div>
+        {{ template "content" .}}
+        <div id="webring">
+
+        </div>
+<script>
+    const webring = document.getElementById('webring');
+    const webringurl = "https://github.com/SevensRequiem/requiem.moe/tree/main/webring";
+    const webringjson = "https://raw.githubusercontent.com/SevensRequiem/requiem.moe/main/webring/webring.json";
+    fetch(webringjson)
+        .then(response => response.json())
+        .then(data => {
+            for (let site of data) {
+                let a = document.createElement('a');
+                a.href = site.link;
+
+                let img = document.createElement('img');
+                img.src = `https://raw.githubusercontent.com/SevensRequiem/requiem.moe/main/webring/${site.image}`; 
+                img.alt = site.title;
+
+                a.appendChild(img);
+
+                webring.appendChild(a);
+            }
+        })
+        .catch(error => {
+            console.error("Failed to fetch webring data:", error);
+            let a = document.createElement('a');
+            a.href = webringurl;
+            a.textContent = "Webring";
+            webring.appendChild(a);
+        });
+
+</script>
+<script>
+    const webringscroll = document.getElementById('webring');
+    let scrollSpeed = 1;
+    let scrollDirection = 1;
+    let scrollDelay = 50;
+    let scrollTimer = null;
+
+    function startScroll() {
+        if (scrollTimer === null) {
+            scrollTimer = setInterval(function () {
+                webringscroll.scrollTop += scrollSpeed * scrollDirection;
+                if (scrollDirection === 1 && webringscroll.scrollTop >= webringscroll.scrollHeight - webringscroll.clientHeight) {
+                    scrollDirection = -1;
+                } else if (scrollDirection === -1 && webringscroll.scrollTop <= 0) {
+                    scrollDirection = 1;
+                }
+            }, scrollDelay);
+        }
+    }
+
+    function stopScroll() {
+        clearInterval(scrollTimer);
+        scrollTimer = null;
+    }
+
+    webringscroll.addEventListener('mouseover', stopScroll);
+
+    webringscroll.addEventListener('mouseout', startScroll);
+
+    startScroll();
+
+
+</script>
+
+    </div>
+    <footer>
+        <p>© 2019 requiem.moe</p>
+        <span id="version">v 1.4.7 - No Ai Edition</span>
+        <span id="network">
+            <span>Luna <span class="glowgreen">[OK]</span></span>
+        </span>
+    </footer>
+</body>
+
+</html>
+<script>
+    function loadTools() {
+        var tools = document.getElementById("tools");
+        if (tools.style.display === "none") {
+            tools.style.display = "block";
+        } else {
+            tools.style.display = "none";
+        }
+    }
+</script>
+<script src="./assets/js/os-font.js"></script>
+<script type="text/javascript">
+    OsFont.compile();
+</script>

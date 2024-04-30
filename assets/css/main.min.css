@@ -1,0 +1,366 @@
+@font-face {
+  font-family: "vector";
+  src: url(/assets/fonts/TerminalVector.ttf);
+}
+@font-face {
+  font-family: "kosugi";
+  src: url(/assets/fonts/Kosugi-Regular.ttf);
+}
+@font-face {
+  font-family: "modenine";
+  src: url(/assets/fonts/Modenine.ttf);
+}
+@font-face {
+  font-family: "digital";
+  src: url(/assets/fonts/DS-DIGI.TTF);
+}
+@font-face {
+  font-family: "minecraft";
+  src: url(/assets/fonts/MinecraftRegular.otf);
+}
+@font-face {
+  font-family: "jpndos";
+  src: url(/assets/fonts/jpndos.woff);
+}
+::selection {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #aaf;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #aaf;
+  border-radius: 5px;
+  height: calc(100% - 5px);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #eef;
+}
+::-webkit-scrollbar-corner {
+  display: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: #aaf;
+  text-decoration: none;
+}
+a:hover {
+  color: #00ff41;
+  text-decoration: none;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "vector";
+  display: grid;
+  grid-template-areas: "side header header" "side content content" "footer footer footer";
+  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-rows: 50px 1fr 50px;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  max-width: 100%;
+  position: relative;
+  color: #eef;
+}
+legend {
+  color: #aaf;
+}
+#content {
+  overflow-y: scroll;
+  overflow-x: wrap;
+  border-style: solid;
+}
+#content fieldset {
+  background-color: #42424225;
+  box-shadow: 0 0 10px #aaf, inset 0 0 10px #aaf;
+}
+#stars {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -9999;
+}
+.glow {
+  text-shadow: 0 0 16px #aaf;
+  color: #aaf;
+}
+.glowred {
+  text-shadow: 0 0 16px red;
+  color: red;
+}
+.glowgreen {
+  text-shadow: 0 0 16px #0f0;
+  color: #0f0;
+}
+.glowblue {
+  text-shadow: 0 0 16px #00f;
+  color: #00f;
+}
+.glowyellow {
+  text-shadow: 0 0 16px #ff0;
+  color: #ff0;
+}
+.glowpurple {
+  text-shadow: 0 0 16px #f0f;
+  color: #f0f;
+}
+.gloworange {
+  text-shadow: 0 0 16px #f80;
+  color: #f80;
+}
+.glowpink {
+  text-shadow: 0 0 16px #f0f;
+  color: #f0f;
+}
+.glowlightred {
+  text-shadow: 0 0 16px #f88;
+  color: #f88;
+}
+.glowlightgreen {
+  text-shadow: 0 0 16px #8f8;
+  color: #8f8;
+}
+.glowlightblue {
+  text-shadow: 0 0 16px #88f;
+  color: #88f;
+}
+.glowlightyellow {
+  text-shadow: 0 0 16px #ff8;
+  color: #ff8;
+}
+.glowlightpurple {
+  text-shadow: 0 0 16px #f8f;
+  color: #f8f;
+}
+.glowlightorange {
+  text-shadow: 0 0 16px #fa0;
+  color: #fa0;
+}
+.glowlightpink {
+  text-shadow: 0 0 16px #f8f;
+  color: #f8f;
+}
+.glowlightcyan {
+  text-shadow: 0 0 16px #0ff;
+  color: #0ff;
+}
+.glowwhite {
+  text-shadow: 0 0 16px #fff;
+  color: #fff;
+}
+.glowdiscord {
+  text-shadow: 0 0 16px #7289da;
+  color: #7289da;
+}
+.glowtwitter {
+  text-shadow: 0 0 16px #1da1f2;
+  color: #1da1f2;
+}
+.glowgithub {
+  text-shadow: 0 0 16px #333;
+  color: #333;
+}
+.glowyoutube {
+  text-shadow: 0 0 16px red;
+  color: red;
+}
+.glowtwitch {
+  text-shadow: 0 0 16px #6441a4;
+  color: #6441a4;
+}
+.glowsteam {
+  text-shadow: 0 0 16px #2e2e2e;
+  color: #363636;
+}
+#sprite-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#ghost1 {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+fieldset {
+  position: relative;
+}
+.legend2 {
+  position: absolute;
+  top: -0.2em;
+  right: 20px;
+  background: #fff;
+  line-height: 1.2em;
+}
+#static {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  background-image: url(/static/images/static.gif);
+  background-repeat: repeat;
+  pointer-events: none;
+  animation: 0.5s StaticIn linear, 3s 0.5s StaticLoop linear alternate infinite;
+}
+#static.fireaway {
+  animation: 3s okFuckOFF linear forwards;
+}
+@keyframes StaticIn {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.03;
+  }
+}
+@keyframes StaticLoop {
+  0% {
+    opacity: 0.03;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+.pentagram-container {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+  animation: pentarotate 60s linear infinite;
+}
+.pentagram-container svg {
+  width: 100%;
+  height: 100%;
+}
+#pentagram .pentagram {
+  transform-origin: 50% 50%;
+  animation: pentagram-flip 3s ease forwards;
+  stroke-dashoffset: 1832.365;
+  stroke-dasharray: 1832.365;
+}
+.pentagram-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(/static/images/s.gif);
+  opacity: 1;
+}
+.linesbackground {
+  background-image: url(/static/images/lines.gif);
+}
+@keyframes pentarotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pentagram-flip {
+  from {
+    fill: rgb(170, 170, 255);
+    stroke-dashoffset: 1832.365;
+  }
+  to {
+    fill: #000;
+    stroke-dashoffset: 0;
+  }
+}
+#contact-box {
+  display: none;
+  position: absolute;
+  background-color: #333333c9;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  z-index: 999;
+  top: 40%;
+  left: 40%;
+}
+#contact-form {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  color: #eef;
+  z-index: 4;
+}
+#contact-form input {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #444;
+  color: #eef;
+}
+#contact-form #submit {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #444;
+  color: #eef;
+  cursor: pointer;
+}
+#contact-form #submit:hover {
+  background-color: #088d25;
+  justify-content: center;
+}
+#donate-box {
+    display: none;
+    position: absolute;
+    background-color: #333333c9;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    z-index: 999;
+    top: 40%;
+    left: 40%;
+  }
+  #payment-form {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    color: #eef;
+    z-index: 4;
+  }
+  #payment-form input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #444;
+    color: #eef;
+  }
+  #payment-form #submit {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #444;
+    color: #eef;
+    cursor: pointer;
+  }
+  #payment-form #submit:hover {
+    background-color: #088d25;
+    justify-content: center;
+  }

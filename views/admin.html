@@ -1,0 +1,153 @@
+{{ define "content" }}
+<style>
+    #admin {
+        margin: 0 auto;
+        width: 100%;
+        padding: 1em;
+        border: 1px solid #000;
+        border-radius: 5px;
+    }
+    #admin h1 {
+        text-align: center;
+    }
+    #admin ul {
+        display: flex;
+        justify-content: center;
+
+        list-style-type: none;
+        padding: 0;
+        
+    }
+    #admin li {
+        margin: 0.5em 0;
+        margin-right: 1em;
+    }
+    #admin form {
+        display: flex;
+        flex-direction: column;
+    }
+    #admin label {
+        margin-bottom: 0.5em;
+    }
+    #admin input {
+        padding: 0.5em;
+        border-radius: 5px;
+        border: 1px solid #000;
+    }
+    #admin button {
+        padding: 0.5em;
+        border-radius: 5px;
+        border: 1px solid #000;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+    #admin button:hover {
+        background-color: #fff;
+        color: #000;
+    }
+</style>
+<fieldset id="admin">
+  <h1>Admin Panel</h1>
+    <span>Hello, {{ .User.Username }}</span>
+  <ul>
+    <li><a href="#" onclick="Users()">Users</a></li>
+    <li><a href="#" onclick="Analytics()">Analytics</a></li>
+    <li><a href="#" onclick="System()">System</a></li>
+    <li><a href="#" onclick="Settings()">Settings</a></li>
+  </ul>
+  <hr>
+<div id="adminwrap">
+
+</div>
+
+</fieldset>
+<script>
+    function Users() {
+        const adminwrap = document.getElementById("adminwrap");
+        fetch("/admin/users")
+            .then(res => res.json())
+            .then(data => {
+                adminwrap.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.map(user => `
+                                <tr>
+                                    <td>${user.username}</td>
+                                    <td>${user.email}</td>
+                                    <td>${user.groups}</td>
+                                </tr>
+                            `).join("")}
+                        </tbody>
+                    </table>
+                `;
+            });
+    }
+function Analytics() {
+    const adminwrap = document.getElementById("adminwrap");
+    fetch("/admin/visitors")
+        .then(res => res.json())
+        .then(data => {
+            adminwrap.innerHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Page</th>
+                            <th>Date</th>
+                            <th>Visitor IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map((visitor, i) => `
+                            <tr>
+                                <td>${visitor.Request}</td>
+                                <td>${visitor.Date}</td>
+                                <td>${visitor.Ip}</td>
+                            </tr>
+                        `).join("")}
+                    </tbody>
+                </table>
+            `;
+        });
+}
+    function System() {
+        const adminwrap = document.getElementById("adminwrap");
+        adminwrap.innerHTML = `
+            <div id="system">
+                <h2>System</h2>
+                <span id="uptimeadmin"></span>
+                <span id="cpu"></span>
+                <span id="memory"></span>
+                <span id="hitstoday"></span>
+                <span id="hitsalltime"></span>
+                </div>
+            </div>
+            <form action="/admin/system" method="POST">
+                <label for="motd">Message of the Day</label>
+                <input type="text" name="motd" id="motd">
+
+                <button type="submit">Create MOTD</button>
+            </form>
+        `;
+        fetch("/admin/sysstats")
+            .then(res => res.json())
+            .then(data => {
+                let uptime = data.Uptime.replace("up ", "");
+                document.getElementById("uptimeadmin").innerText = `Uptime: ${uptime}`;
+                document.getElementById("cpu").innerText = `CPU: ${data.Cpu}`;
+                document.getElementById("memory").innerText = `Memory: ${data.Memory}`;
+                document.getElementById("hitstoday").innerText = `Hits Today: ${data.HitsToday}`;
+                document.getElementById("hitsalltime").innerText = `Hits All Time: ${data.HitsAllTime}`;
+            });
+    }
+
+</script>
+
+{{ end }}

@@ -1,0 +1,79 @@
+{{ define "content"}}
+<fieldset id="content" class="purpleborder">
+    <legend id="toplegend">
+        Analytics
+        <img src="./assets/icons/coffee-cup.png" alt="Heart" style="width: 1em; height: 1em" />
+        <span id="hitcounter" title="1337"> </span>
+        <script>
+            const hiturl = "./api/stats";
+            async function fetchHits() {
+                let response = await fetch(hiturl);
+                if (response.status === 404) {
+                    console.error("Failed to fetch hits");
+                    return;
+                }
+                let data = await response.json();
+                if (!data.Hits) {
+                    console.error("No hits to display");
+                    return;
+                }
+                const hits = data.Hits.toString().padStart(6, "0");
+                const hitcounter = document.getElementById("hitcounter");
+                hitcounter.innerHTML = "";
+                for (let digit of hits) {
+                    let img = document.createElement("img");
+                    img.src = `./assets/counter/gelbooru${digit}.gif`;
+                    img.alt = digit;
+                    hitcounter.appendChild(img);
+                }
+            }
+            fetchHits();
+        </script>
+    </legend>
+    <div id="analytics">
+        {{ range $visit := .visitors }}
+        <fieldset class="visit">
+            <legend>{{ $visit.Id }}</legend>
+            <span>{{ $visit.Ip }}</span>
+            <span>{{ $visit.User_agent }}</span>
+            <span>{{ $visit.Request_type }}</span>
+            <p>{{ $visit.Request_header }}</p>
+            <span>{{ $visit.Request }}</span>
+            <span>{{ $visit.Request_full }}</span>
+        </fieldset>
+        {{ end }}
+    </div>
+<style>
+    #analytics {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+    }
+
+    .visit {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 1em;
+        padding: 1em;
+        border: 1px solid rgb(78, 22, 22);
+        border-radius: 1em;
+        color:aqua;
+    }
+
+    .visit span {
+        margin: 0.5em;
+    }
+
+    .visit p {
+        margin: 0.5em;
+        padding: 0.5em;
+        border: 1px solid black;
+        border-radius: 1em;
+    }
+    
+</style>
+</fieldset>
+{{ end }}

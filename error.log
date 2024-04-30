@@ -1,0 +1,68 @@
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.4
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:1337
+ 192.168.0.16 > GET > /home > 200 14.379885ms
+ 192.168.0.16 > GET > /assets/css/main.css > 304 261.558µs
+ 192.168.0.16 > GET > /assets/css/fonts/stylesheet.css > 404 422.28µs
+ 192.168.0.16 > GET > /api/stats > 200 1.586011ms
+ 192.168.0.16 > GET > /assets/img/checkerboard.jpg > 304 524.731µs
+ 192.168.0.16 > GET > /api/fetchanime > 200 1.190846ms
+ 192.168.0.16 > GET > /get-messages > 200 3.807018ms
+ 192.168.0.16 > GET > /assets/favicon.ico > 404 209.929µs
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.4
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:1337
+ 192.168.0.16 > GET > /home > 200 6.217513ms
+ 192.168.0.16 > GET > /assets/css/fonts/stylesheet.css > 404 504.612µs
+ 192.168.0.16 > GET > /api/stats > 200 1.859922ms
+ 192.168.0.16 > GET > /api/fetchanime > 200 3.185652ms
+ 192.168.0.16 > GET > /get-messages > 200 4.957231ms
+ 192.168.0.16 > GET > /home > 200 2.532919ms
+ 192.168.0.16 > GET > /assets/css/fonts/stylesheet.css > 404 335.747µs
+ 192.168.0.16 > GET > /api/stats > 200 562.965µs
+ 192.168.0.16 > GET > /api/fetchanime > 200 1.032194ms
+ 192.168.0.16 > GET > /get-messages > 200 4.072659ms
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.4
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:1337
+ 192.168.0.16 > GET > /home > 200 6.533296ms
+ 192.168.0.16 > GET > /assets/css/fonts/stylesheet.css > 404 417.463µs
+ 192.168.0.16 > GET > /api/stats > 200 1.723047ms
+ 192.168.0.16 > GET > /api/fetchanime > 200 1.312934ms
+ 192.168.0.16 > GET > /get-messages > 200 4.087656ms
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.4
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:1337
+ 192.168.0.16 > GET > /home > 200 5.262027ms
+ 192.168.0.16 > GET > /assets/css/fonts/stylesheet.css > 404 371.675µs
+ 192.168.0.16 > GET > /api/stats > 200 390.276µs
+ 192.168.0.16 > GET > /api/fetchanime > 200 4.749853ms
+ 192.168.0.16 > GET > /get-messages > 200 7.199784ms
