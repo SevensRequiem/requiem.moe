@@ -14,7 +14,7 @@ class DiscordNotificationController extends Controller
         $timestamp = time();
         $date = date("Y-m-d H:i:s", $timestamp);
 
-        $webhook = 'https://discord.com/api/webhooks/1204784618255945728/p_zbWbJxyOmorVeOB0mns6XBrWm7qc2TXCDfTlaUHiOUt-ls1hxsiG74y4lwEDJD34e6';
+        $webhook = '';
 
         $data = [
             'embeds' => [
@@ -52,7 +52,7 @@ class DiscordNotificationController extends Controller
         $timestamp = time();
         $date = date("Y-m-d H:i:s", $timestamp);
 
-        $webhook = 'https://discord.com/api/webhooks/1204784618255945728/p_zbWbJxyOmorVeOB0mns6XBrWm7qc2TXCDfTlaUHiOUt-ls1hxsiG74y4lwEDJD34e6';
+        $webhook = '';
 
         $data = [
             'embeds' => [

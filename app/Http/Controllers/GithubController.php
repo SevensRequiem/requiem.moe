@@ -15,7 +15,7 @@ class GithubController extends Controller
     public function getallstats()
     {
         $githubUsername = 'SevensRequiem';
-        $accessToken = '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';
+        $accessToken = '';
 
         // Initialize Guzzle HTTP client
         $client = new GuzzleHttp\Client();
