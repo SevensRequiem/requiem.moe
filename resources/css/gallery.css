@@ -1,0 +1,31 @@
+/* gallery.css */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    max-height: 70%;
+    object-fit: cover;
+}
+.gallery-video {
+    width: 100%;
+    height: auto;
+    max-height: 70%;
+    object-fit: cover;
+}
+#popup {
+    position: absolute;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  
+  #popup-image {
+    max-width: 1000px;
+    max-height: 1000px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }

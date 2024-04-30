@@ -1,0 +1,37 @@
+#store {
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    color: #EEF;
+    z-index: 4;
+}
+#store .header, #store .row {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    border-radius: 10px;
+    color: #EEF;
+    z-index: 4;
+    border: #EEF 1px solid;
+    padding: 1vh;
+}
+#store .row {
+    height: 10vh;
+    padding: 1vh;
+}
+
+#store a:hover {
+    background-color: rgba(16, 82, 136, 0.753);
+}
+#store .column {
+    border: 1px solid #EEF;
+    flex: 1;
+}
+#store .column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}

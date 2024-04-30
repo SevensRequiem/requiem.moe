@@ -1,0 +1,19 @@
+footer {
+  background: rgba(0, 0, 0, 0.945);
+    grid-area: footer;
+    text-shadow: 0px 0px 16px #AAF;
+    mix-blend-mode: lighten;
+    border: 1px solid #FFF;
+    box-shadow: 0px 0px 32px #AAF;
+  color: #EEF;
+  font-size: small;
+  word-wrap: break-word;
+  text-align: center;
+  overflow: none;
+  font-family: vector;
+}
+#helloip {
+  font-size: 0.8em;
+  color: #AAF;
+  float: right;
+}

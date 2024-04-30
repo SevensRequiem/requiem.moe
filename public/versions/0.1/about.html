@@ -1,0 +1,86 @@
+<html>
+	<head>
+            <!--<PageMap>
+                    <DataObject type="document">
+                       <Attribute name="title">A Requiem For Sevens About</Attribute>
+                       <Attribute name="description">aboutpage of sevens</Attribute>
+                    </DataObject>
+                    <DataObject type="thumbnail">
+                       <Attribute name="src" value="https://sevens.gq/assets/thumbnail.jpg" />
+                       <Attribute name="width" value="385" />
+                       <Attribute name="height" value="385" />
+                    </DataObject>
+                 </PageMap>-->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135043178-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135043178-1');
+</script>
+<link href="css/about.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	</head>
+    <!--[if IE]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    var numberOfSongs = 8
+    var sound = new Array(numberOfSongs+1)
+    sound[0]= "assets/sunshine.mp3"
+    sound[1]= "assets/kill_me.mp3"
+    sound[2]= "assets/leave_me_alone.mp3"
+    sound[3]= "assets/october.mp3"
+    sound[4]= "assets/sheep.mp3"
+    sound[5]= "assets/filth.mp3"
+    sound[6]= "assets/razor.mp3"
+    sound[7]= "assets/king.mp3"
+    sound[8]= "assets/king.mp3"
+    function randomNumber(){
+    var randomLooper = -1
+    while (randomLooper < 0 || randomLooper > numberOfSongs || isNaN(randomLooper)){ randomLooper = parseInt(Math.random()*(numberOfSongs+1))
+    }
+    return randomLooper
+    }
+    var randomsub = randomNumber()
+    var soundFile = sound[randomsub]
+    document.write ('<EMBED src= "' + soundFile + '" hidden=true autostart=true loop=true>')
+    </script>
+<script language="JavaScript">
+    var space = " ";
+    var speed = "250";
+    var pos = 0;
+    var msg = "r e q u i e m - a b o u t -";
+    function Scroll()
+    {
+    document.title = msg.substring(pos, msg.length) + space + msg.substring(0,pos);
+    pos++;
+    if (pos > msg.length) pos = 0;
+    window.setTimeout("Scroll()", speed);
+    }
+    Scroll();
+    </script>
+	<style>
+    body, a, a:link{cursor:url(assets/cursor.cur), default;} a:hover {cursor:url(assets/cursor.cur),pointer;}
+    </style>
+        <div id="center_wrap">
+            <div id="t1">about</div>
+	        <div id="music">
+	        <a href="http://sevens.gq/music">music</a>
+	        </div>
+	        <div id="anime">
+	        <a href="http://sevens.gq/anime">anime</a>
+            </div>
+            <div id="games">
+                <a href="http://sevens.gq/games">games</a>
+                </div>
+            <div id="back">
+                <a href="http://sevens.gq/hub">back</a>
+                </div>
+	</body>
+</html>
+
+

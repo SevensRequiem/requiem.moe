@@ -1,0 +1,38 @@
+#toolscontent {
+    grid-area: content;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-areas: 
+      "info domains scripts"
+      "info domains scripts";
+    padding: 1px;
+    margin: 5px;
+    grid-gap: 10px;
+  }
+
+  #info {
+    grid-area: info;
+    max-height: calc(80vh - 50px);
+    max-width: 30vh;
+    height: 100%;
+    text-align: center;
+    overflow: scroll;
+  }
+
+  #domains {
+    grid-area: domains;
+    max-height: calc(80vh - 50px);
+    height: 100%;
+    text-align: center;
+  }
+  
+  #scripts {
+    grid-area: scripts;
+    max-height: calc(80vh - 50px);
+    max-width: 30vh;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow:scroll;
+  }

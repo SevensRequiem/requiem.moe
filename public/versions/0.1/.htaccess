@@ -1,0 +1,8 @@
+# ---- Render pages without urls
+Options +MultiViews
+
+Redirect 301 /hub http://sevens.gq/hub
+Redirect 301 /sekrit http://sevens.gq/sekrit
+Redirect 301 /about http://sevens.gq/about
+Redirect 301 /music http://sevens.gq/music
+ErrorDocument 404 http://sevens.gq/404

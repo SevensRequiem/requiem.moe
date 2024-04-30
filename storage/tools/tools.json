@@ -1,0 +1,156 @@
+[
+    {
+        "title": "0logaura.py",
+        "description": "saves data from server for training model",
+        "size": 2188,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import discord\nimport os\nimport csv\nimport logging\nfrom dotenv import load_dotenv\nfrom colorama import Fore, Style\n\n# Set up logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)"
+    },
+    {
+        "title": "0trainaura.py",
+        "description": "trains model from 0logaura data",
+        "size": 2891,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import os\nos.environ[\"CUDA_VISIBLE_DEVICES\"] = \"1\"\n\nimport tensorflow as tf\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom tensorflow.keras.preprocessing.text import Tokenizer\nfrom tensorflow.keras.preprocessing.sequence import pad_sequences\nimport GPUtil\nfrom tqdm import tqdm"
+    },
+    {
+        "title": "4chankw.py",
+        "description": "4chankw, scrapes 4chan for keywords",
+        "size": 2082,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import requests\nfrom bs4 import BeautifulSoup\nfrom colorama import Fore, Style\nimport time\n\ndef search_4chan(keywords, interval, verbose, boards):\n    base_url = \"https://boards.4chan.org/\"\n\n    with open('found_posts.txt', 'w') as f:\n        while True:"
+    },
+    {
+        "title": "4chanScrapeImgs.py",
+        "description": "4chanScrapeImgs, scrapes 4chan for images",
+        "size": 4787,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import requests\nimport time\nimport os\nimport shutil\nimport re\nimport json\nfrom colorama import Fore, Style\n\ndef countdown(t, verbose):\n    while t:"
+    },
+    {
+        "title": "bluetoothtest.py",
+        "description": "bluetooth test",
+        "size": 513,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import bluetooth\n\ndef discover_devices():\n    print(\"Performing inquiry...\")\n    nearby_devices = bluetooth.discover_devices(duration=8, lookup_names=True, flush_cache=True)\n    print(\"Found {} devices.\".format(len(nearby_devices)))\n\n    for addr, name in nearby_devices:\n        try:\n            print(\"   {} - {}\".format(addr, name))"
+    },
+    {
+        "title": "checker.py",
+        "description": "checks tokens",
+        "size": 1653,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import requests\nfrom tqdm import tqdm\nfrom colorama import Fore, init\n\ninit(autoreset=True)\n\ndef check_discord_tokens(tokens, proxies):\n    valid_tokens = []\n    pbar = tqdm(total=len(tokens), desc=\"Checking tokens\", ncols=70)\n    for token in tokens:"
+    },
+    {
+        "title": "cyanreact.py",
+        "description": "reacts to messages with cyan role w a emoji word",
+        "size": 2050,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import discord\nimport asyncio\nimport datetime\nfrom colorama import Fore, Style\nimport traceback\nimport os\n\ntoken = os.getenv(\"TOKEN\")\nbot = discord.Client()\n"
+    },
+    {
+        "title": "finduser.py",
+        "description": "find user in server",
+        "size": 16336,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import selfcord\nimport colorama\nfrom colorama import Fore, Style\nimport os\nfrom dotenv import load_dotenv\nfrom difflib import get_close_matches\nfrom datetime import datetime\nimport sys\n\ncolorama.init()"
+    },
+    {
+        "title": "generator.py",
+        "description": "token generator test",
+        "size": 1932,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import random\nimport string\nimport os\nimport requests\nfrom itertools import cycle\nimport base64\nfrom random import randint\n\nuser_id = input(\"Enter user ID : \")\ncount = 0"
+    },
+    {
+        "title": "getemojis.py",
+        "description": "dl emojis from server",
+        "size": 1259,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import discord\nfrom datetime import datetime\nimport os\nimport requests\nfrom tqdm import tqdm\nimport os\n\ntoken = os.getenv(\"TOKEN\")\nbot = discord.Client()\n"
+    },
+    {
+        "title": "getgifs.py",
+        "description": "getgifs test",
+        "size": 1736,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "from pathlib import Path\nimport json\nimport requests\nimport argparse\n\ndef download_gifs(json_file_path: str, dont_rename_files: bool):\n    with open(json_file_path, \"r\") as json_file:\n        data = json.load(json_file)\n\n    gifs = data[\"_state\"][\"favorites\"]"
+    },
+    {
+        "title": "members.py",
+        "description": "scrape members from a server",
+        "size": 1245,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import selfcord\nimport os\nfrom colorama import init, Fore\n\ntoken = os.getenv(\"TOKEN\")\nos.system('cls' if os.name == 'nt' else 'clear')\ninit()\n# Replace SERVER_ID with the ID of the server you want to list members for\nserver_id = input(Fore.MAGENTA + \"Enter the ID of the server you want to list members for: \")\n# Replace CHANNEL_ID with the ID of the channel you want to search for members in"
+    },
+    {
+        "title": "menu.py",
+        "description": "menu file",
+        "size": 1909,
+        "creationdate": "2023-09-20 17:55:01",
+        "summary": "import os\nimport subprocess\nimport colorama\nfrom colorama import Fore, Back, Style\nfrom watchdog.observers import Observer\nfrom watchdog.events import FileSystemEventHandler\n\ncolorama.init()\n\nclass FileChangeHandler(FileSystemEventHandler):"
+    },
+    {
+        "title": "mutuals.py",
+        "description": "mutuals test",
+        "size": 928,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import discord\nfrom colorama import Fore, Style\nimport os\n\ntoken = os.getenv(\"TOKEN\")\nbot = discord.Client()\n\n# Get the specific server and user IDs from user input\nserver_id = int(input(\"Enter the server ID: \"))\nuser_id = int(input(\"Enter the user ID: \"))"
+    },
+    {
+        "title": "proxies.py",
+        "description": "scrape proxies from array of sites",
+        "size": 4378,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import requests\nfrom bs4 import BeautifulSoup\nfrom colorama import Fore, init\nimport time\nimport os\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\nfrom tqdm import tqdm\nimport re\n\ninit()"
+    },
+    {
+        "title": "proxycheck.py",
+        "description": "check proxies from generator",
+        "size": 1622,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import os\nimport requests\nfrom concurrent.futures import ThreadPoolExecutor\nfrom colorama import Fore, init\n\ninit()\n\ndef check_proxy(proxy):\n    url = \"http://www.google.com\"\n    try:"
+    },
+    {
+        "title": "reactto.py",
+        "description": "react to all msgs with set emoji",
+        "size": 1969,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import discord\nimport asyncio\nimport datetime\nfrom colorama import Fore, Style\nimport os\n\ntoken = os.getenv(\"TOKEN\")\nbot = discord.Client()\n\n# Set the specific server and channel IDs"
+    },
+    {
+        "title": "report.py",
+        "description": "mass report test",
+        "size": 3291,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import requests\nimport time\nimport logging\nimport ctypes\nimport os\nfrom threading import Thread\nfrom colorama import Fore\n\nkernel32 = ctypes.windll.kernel32\ntokens = open(\"data/token.txt\", \"r\").read().splitlines()"
+    },
+    {
+        "title": "response.py",
+        "description": "respond to keywords in any server or dm user is in",
+        "size": 1622,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import discord\nimport asyncio\nimport datetime\nimport colorama\nfrom colorama import Fore, Style\nimport os\n\ntoken = os.getenv(\"TOKEN\")\nbot = discord.Client()\n"
+    },
+    {
+        "title": "rng.py",
+        "description": "testing rng and entropy",
+        "size": 851,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import ephem\nimport secrets\nfrom colorama import Fore, init\n\n# Initialize colorama\ninit()\n\nwhile True:\n    # Get the current moon phase\n    observer = ephem.Observer()"
+    },
+    {
+        "title": "scrapeusers.py",
+        "description": "scrapeusers / members.py #2",
+        "size": 1112,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import discord\nfrom datetime import datetime\nimport os\n\ntoken = \"redacted\"\nbot = discord.Client()\n\n@bot.event\nasync def on_ready():\n    server_id = \"895738895931670558\""
+    },
+    {
+        "title": "torrent.py",
+        "description": "torrent testing with transmissionrpc",
+        "size": 1885,
+        "creationdate": "2023-09-20 17:55:21",
+        "summary": "import os\nimport transmissionrpc\n\n# Get list of proxy files\nproxy_files = os.listdir('workingproxies')\n\n# Print proxy files and let user select\nfor i, file in enumerate(proxy_files):\n    print(f'{i+1}. {file}')\nselected_file = int(input('Select a proxy file by number: ')) - 1"
+    }
+]

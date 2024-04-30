@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'jpndos';
+    src: url(/assets/fonts/jpndos.woff);
+  }
+#blog {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    color: #EEF;
+}
+
+#blog #blogpost {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#blogpost ul {
+    font-size: 15px;
+    color: rgb(75, 212, 171);
+    font-family: jpndos;
+}
+#blogpost h1 {
+    font-size: 25px;
+    color: #AAF;
+    font-family: jpndos;
+}
+#blogpost h2 {
+    font-size: 20px;
+    color: #AAF;
+    font-family: jpndos;
+}
+#blogpost h3 {
+    font-size: 18px;
+    color: #AAF;
+    font-family: jpndos;
+}
+#blogpost h4 {
+    font-size: 16px;
+    color: #AAF;
+    font-family: jpndos;
+}
+#blogpost h5 {
+    font-size: 14px;
+    color: #AAF;
+    font-family: jpndos;
+}
+#blogpost h6 {
+    font-size: 12px;
+    color: #AAF;
+    font-family: jpndos;
+}
+#blogpost p {
+    font-size: 15px;
+    color: rgb(75, 158, 212);
+    font-family: jpndos;
+}
+#blogpost code {
+    font-size: 15px;
+    color: #AAF;
+    border: #AAF 1px solid;
+    font-family: jpndos;
+
+}
+#blog #blogfieldset {
+    border: 1px solid #EEF;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0 0 10px #aaF;
+    background-color: rgba(6, 16, 61, 0.5);
+}
+#blog #blogfieldset img {
+    max-width: 300px;
+    max-height: 300px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+#bloglegend {
+background-color: rgba(0, 0, 0, 0.753);
+    border-radius: 10px;
+
+}
+
+.blogtitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #EEF;
+}
+
+.blogdate {
+    font-size: 15px;
+    color: rgb(0, 146, 66);
+}
+
+.blogauthor {
+    font-size: 15px;
+    color: rgb(255, 0, 0);
+}
+
+.blogquote {
+    font-size: 17px;
+    background-image: url(/static/images/s.gif);
+}
+

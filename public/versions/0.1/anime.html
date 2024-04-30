@@ -1,0 +1,104 @@
+<html>
+	<head>
+            <!--<PageMap>
+                    <DataObject type="document">
+                       <Attribute name="title">Anime</Attribute>
+                       <Attribute name="description">requiem's fav anime</Attribute>
+                    </DataObject>
+                    <DataObject type="thumbnail">
+                       <Attribute name="src" value="https://sevens.gq/assets/thumbnail.jpg" />
+                       <Attribute name="width" value="385" />
+                       <Attribute name="height" value="385" />
+                    </DataObject>
+                 </PageMap>-->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135043178-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135043178-1');
+</script>
+<link href="css/anime.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	</head>
+    <!--[if IE]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    var numberOfSongs = 8
+    var sound = new Array(numberOfSongs+1)
+    sound[0]= "assets/sunshine.mp3"
+    sound[1]= "assets/kill_me.mp3"
+    sound[2]= "assets/leave_me_alone.mp3"
+    sound[3]= "assets/october.mp3"
+    sound[4]= "assets/sheep.mp3"
+    sound[5]= "assets/filth.mp3"
+    sound[6]= "assets/razor.mp3"
+    sound[7]= "assets/king.mp3"
+    sound[8]= "assets/king.mp3"
+    function randomNumber(){
+    var randomLooper = -1
+    while (randomLooper < 0 || randomLooper > numberOfSongs || isNaN(randomLooper)){ randomLooper = parseInt(Math.random()*(numberOfSongs+1))
+    }
+    return randomLooper
+    }
+    var randomsub = randomNumber()
+    var soundFile = sound[randomsub]
+    document.write ('<EMBED src= "' + soundFile + '" hidden=true autostart=true loop=true>')
+    </script>
+<script language="JavaScript">
+    var space = " ";
+    var speed = "250";
+    var pos = 0;
+    var msg = "r e q u i e m - a n i m e -";
+    function Scroll()
+    {
+    document.title = msg.substring(pos, msg.length) + space + msg.substring(0,pos);
+    pos++;
+    if (pos > msg.length) pos = 0;
+    window.setTimeout("Scroll()", speed);
+    }
+    Scroll();
+    </script>
+	<style>
+    body, a, a:link{cursor:url(assets/cursor.cur), default;} a:hover {cursor:url(assets/cursor.cur),pointer;}
+    </style>
+        <div id="center_wrap">
+            <div id="t1">anime</div>
+	        <div id="a1">
+	        <a href="https://myanimelist.net/anime/9253/Steins_Gate" target="_blank">Steins;Gate</a>
+	        </div>
+	        <div id="a2">
+	        <a href="https://myanimelist.net/anime/43/Ghost_in_the_Shell" target="_blank">Ghost in the Shell</a>
+            </div>
+            <div id="a3">
+                <a href="https://myanimelist.net/anime/35849/Darling_in_the_FranXX" target="_blank">Darling in the FranXX</a>
+                </div>
+                <div id="a4">
+                    <a href="https://myanimelist.net/anime/30/Neon_Genesis_Evangelion" target="_blank">Neon Genesis Evangelion</a>
+                    </div>
+                <div id="a5">
+                    <a href="https://myanimelist.net/anime/32182/Mob_Psycho_100" target="_blank">Mob Psycho 100</a>
+                    </div>
+                    <div id="a6">
+                            <a href="https://myanimelist.net/anime/29803/Overlord" target="_blank">Overlord</a>
+                        </div>
+                        <div id="a7">
+                            <a href="https://myanimelist.net/anime/16498/Shingeki_no_Kyojin" target="_blank">Attack on Titan</a>
+                            </div>
+                            <div id="a8">
+                                <a href="https://myanimelist.net/anime/1575/Code_Geass__Hangyaku_no_Lelouch" target="_blank">Code Geass</a>
+                                </div>
+                                    <div id="a9">
+                                        <a href="https://myanimelist.net/anime/226/Elfen_Lied" target="_blank">Elfen Lied</a>
+                                        </div>
+            <div id="back">
+                <a href="http://sevens.gq/about">back</a>
+                </div>
+	</body>
+</html>
+
+
